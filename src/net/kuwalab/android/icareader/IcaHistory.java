@@ -1,0 +1,109 @@
+package net.kuwalab.android.icareader;
+
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
+import net.kuwalab.android.util.HexUtil;
+
+public class IcaHistory {
+	/** 乗車日付 */
+	public String date;
+	/** 乗車時刻 */
+	public String beginTime;
+	/** 降車時刻 */
+	public String endTime;
+	/** 使用金額 */
+	public int useMoney;
+	/** 残額 */
+	public int restMoney;
+
+	public String getReason() {
+		if (useMoney < 0) {
+			return "使用";
+		}
+		return "積み増し";
+	}
+
+	public String getDispUseMoney() {
+		int result = useMoney;
+		if (useMoney < 0) {
+			result = -result;
+		}
+
+		DecimalFormat decimalFormat = new DecimalFormat("#,###");
+		return decimalFormat.format(result);
+	}
+
+	public String getDispRestMoney() {
+		DecimalFormat decimalFormat = new DecimalFormat("#,###");
+		return decimalFormat.format(restMoney);
+	}
+
+	public IcaHistory(byte[] historyData) {
+		date = getDate(Arrays.copyOfRange(historyData, 0, 2));
+		beginTime = getTime(historyData[5]);
+		endTime = getTime(historyData[2]);
+		useMoney = getUseMoney(Arrays.copyOfRange(historyData, 11, 13));
+		restMoney = HexUtil.toInt(Arrays.copyOfRange(historyData, 13, 15));
+	}
+
+	private String getDate(byte[] bytes) {
+		StringBuilder sb = new StringBuilder();
+		int year = (bytes[0] >>> 1) + 2000;
+		int month = 0;
+		if ((bytes[0] & 0x01) == 1) {
+			month = month + 8;
+		}
+		month = month + ((bytes[1] >>> 5) & 0x07);
+		int day = (bytes[1] & 0x1F);
+
+		sb.append(year).append("年");
+		if (month < 10) {
+			sb.append(" ");
+		}
+		sb.append(month).append("月");
+		if (day < 10) {
+			sb.append(" ");
+		}
+		sb.append(day).append("日");
+
+		return sb.toString();
+	}
+
+	private String getTime(byte timeByte) {
+		if (timeByte == 0) {
+			return "--:--";
+		}
+
+		int time = timeByte;
+		if (time < 0) {
+			time = time + 256;
+		}
+		time = time * 10;
+
+		int hour = time / 60;
+		int minute = time % 60;
+		StringBuilder sb = new StringBuilder();
+		if (hour < 10) {
+			sb.append(" ");
+		}
+		sb.append(hour).append(":");
+		if (minute < 10) {
+			sb.append("0");
+		}
+		sb.append(minute);
+
+		return sb.toString();
+	}
+
+	private int getUseMoney(byte[] bytes) {
+		int use = 0;
+		use = use | (bytes[0] << 8);
+		use = use | bytes[1];
+		if (use >= 0) {
+			use = use & 0x0fff;
+		}
+
+		return use * 10;
+	}
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style
+    name="IcaStyle">
+    <item
+      name="android:textColor">#ffffff</item>
+    <item
+      name="android:typeface">monospace</item>
+    <item
+      name="android:textSize">16sp</item>
+  </style>
+  <style
+    name="IcaRestMoneyStyle">
+    <item
+      name="android:textColor">#ffff60</item>
+    <item
+      name="android:typeface">monospace</item>
+    <item
+      name="android:textSize">16sp</item>
+  </style>
+  <style
+    name="IcaRestStyle">
+    <item
+      name="android:textColor">#ffffff</item>
+    <item
+      name="android:typeface">monospace</item>
+    <item
+      name="android:textSize">25sp</item>
+  </style>
+  <style
+    name="IcaHistoryStyle">
+    <item
+      name="android:textColor">#ffffff</item>
+    <item
+      name="android:typeface">monospace</item>
+    <item
+      name="android:textSize">18sp</item>
+  </style>
+</resources>

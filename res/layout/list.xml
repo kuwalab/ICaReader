@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="horizontal"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <TextView
+    android:id="@+id/no"
+    android:layout_width="35dip"
+    android:layout_height="fill_parent"
+    android:paddingRight="5dip"
+    android:gravity="center_vertical|right"
+    android:textColor="#fff"
+    android:textSize="25sp" />
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent">
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="乗車日"
+        android:paddingRight="5dip"
+        style="@style/IcaStyle" />
+      <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/IcaStyle" />
+    </LinearLayout>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent">
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="乗車時間"
+        android:paddingRight="5dip"
+        style="@style/IcaStyle" />
+      <TextView
+        android:id="@+id/beginTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/IcaStyle" />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="～"
+        style="@style/IcaStyle" />
+      <TextView
+        android:id="@+id/endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/IcaStyle" />
+    </LinearLayout>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent">
+      <TextView
+        android:id="@+id/reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="5dip"
+        style="@style/IcaStyle" />
+      <TextView
+        android:id="@+id/useMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/IcaStyle" />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="残高"
+        android:paddingLeft="10dip"
+        android:paddingRight="5dip"
+        style="@style/IcaRestMoneyStyle" />
+      <TextView
+        android:id="@+id/restMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/IcaRestMoneyStyle" />
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>

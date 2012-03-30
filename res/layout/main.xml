@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView
+      android:id="@+id/messageText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      style="@style/IcaRestStyle" />
+    <TextView
+      android:id="@+id/nowRestMoneyText"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="right"
+      style="@style/IcaRestStyle" />
+  </LinearLayout>
+  <TextView
+    android:id="@+id/historyText"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    style="@style/IcaHistoryStyle" />
+  <ListView
+    android:id="@+id/listView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>
