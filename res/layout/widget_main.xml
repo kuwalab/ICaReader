@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/widgetBody"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:layout_marginLeft="2dp"
+  android:layout_marginTop="2dp"
+  android:background="#a0ffffff"
+  android:gravity="center"
+  android:orientation="vertical"
+  android:padding="5dp" >
+  <TextView
+    style="@style/IcaWidgetStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/ica_title" />
+  <TextView
+    style="@style/IcaWidgetNormalStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/ica_last_conf_date" />
+  <TextView
+    android:id="@+id/confDate"
+    style="@style/IcaWidgetNormalStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right" />
+  <TextView
+    style="@style/IcaWidgetNormalStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/ica_rest" />
+  <TextView
+    android:id="@+id/widetRest"
+    style="@style/IcaWidgetNormalStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right" />
+</LinearLayout>
