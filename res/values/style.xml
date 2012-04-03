@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style
-    name="IcaStyle">
-    <item
-      name="android:textColor">#ffffff</item>
-    <item
-      name="android:typeface">monospace</item>
-    <item
-      name="android:textSize">16sp</item>
+  <style name="IcaRestStyle">
+    <item name="android:textColor">#ff8040</item>
+    <item name="android:background">#ffd0d0</item>
+    <item name="android:typeface">monospace</item>
+    <item name="android:textSize">25sp</item>
   </style>
-  <style
-    name="IcaRestMoneyStyle">
-    <item
-      name="android:textColor">#ffff60</item>
-    <item
-      name="android:typeface">monospace</item>
-    <item
-      name="android:textSize">16sp</item>
+  <style name="IcaHistoryStyle">
+    <item name="android:textColor">#ffffff</item>
+    <item name="android:background">#8080ff</item>
+    <item name="android:typeface">monospace</item>
+    <item name="android:textSize">18sp</item>
   </style>
-  <style
-    name="IcaRestStyle">
-    <item
-      name="android:textColor">#ffffff</item>
-    <item
-      name="android:typeface">monospace</item>
-    <item
-      name="android:textSize">25sp</item>
+  <style name="IcaStyle">
+    <item name="android:textColor">#000000</item>
+    <item name="android:typeface">monospace</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:background">#ffd0d0</item>
   </style>
-  <style
-    name="IcaHistoryStyle">
-    <item
-      name="android:textColor">#ffffff</item>
-    <item
-      name="android:typeface">monospace</item>
-    <item
-      name="android:textSize">18sp</item>
+  <style name="IcaAddMoneyStyle">
+    <item name="android:textColor">#0000ff</item>
+    <item name="android:gravity">right</item>
+  </style>
+  <style name="IcaUseMoneyStyle">
+    <item name="android:textColor">#ff8040</item>
+    <item name="android:gravity">right</item>
+  </style>
+  <style name="IcaRestMoneyStyle">
+    <item name="android:textColor">#000000</item>
+    <item name="android:gravity">right</item>
+  </style>
+  <style name="IcaWidgetStyle">
+    <item name="android:textColor">#ff8040</item>
+    <item name="android:background">#ffd0d0</item>
+    <item name="android:gravity">center</item>
+  </style>
+  <style name="IcaWidgetNormalStyle">
+    <item name="android:textColor">#000000</item>
+    <item name="android:textSize">12sp</item>
   </style>
 </resources>

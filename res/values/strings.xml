@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string
-    name="app_name">ICa Reader</string>
+  <string name="app_name">ICa Reader</string>
+  <string name="kara">～</string>
+  <string name="ica_first_step">ICaを端末にかざしてください</string>
+  <string name="ica_use_date">利用日</string>
+  <string name="ica_add">積増</string>
+  <string name="ica_use">使用</string>
+  <string name="ica_title">ICa</string>
+  <string name="ica_rest">残高</string>
+  <string name="ica_last_conf_date">最終確認日</string>
 </resources>

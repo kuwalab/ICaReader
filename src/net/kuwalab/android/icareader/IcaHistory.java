@@ -17,21 +17,20 @@ public class IcaHistory {
 	/** 残額 */
 	public int restMoney;
 
-	public String getReason() {
-		if (useMoney < 0) {
-			return "使用";
-		}
-		return "積み増し";
+	public static final boolean USE = true;
+
+	public boolean isUse() {
+		return useMoney < 0;
 	}
 
 	public String getDispUseMoney() {
-		int result = useMoney;
-		if (useMoney < 0) {
-			result = -result;
-		}
-
 		DecimalFormat decimalFormat = new DecimalFormat("#,###");
-		return decimalFormat.format(result);
+		return decimalFormat.format(-useMoney);
+	}
+
+	public String getDispAddMoney() {
+		DecimalFormat decimalFormat = new DecimalFormat("#,###");
+		return decimalFormat.format(useMoney);
 	}
 
 	public String getDispRestMoney() {

@@ -1,30 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+  android:layout_height="fill_parent"
+  android:orientation="vertical" >
   <LinearLayout
-    android:orientation="horizontal"
+    android:id="@+id/firstStepLayout"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
     <TextView
       android:id="@+id/messageText"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      style="@style/IcaRestStyle" />
+      style="@style/IcaRestStyle"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent" />
     <TextView
       android:id="@+id/nowRestMoneyText"
+      style="@style/IcaRestStyle"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="right" />
+  </LinearLayout>
+  <LinearLayout
+    style="@style/IcaHistoryStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <TextView
+      style="@style/IcaHistoryStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/ica_use_date" />
+    <LinearLayout
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:gravity="right"
-      style="@style/IcaRestStyle" />
+      android:orientation="horizontal" >
+      <TextView
+        style="@style/IcaHistoryStyle"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:text="@string/ica_add" />
+      <TextView
+        style="@style/IcaHistoryStyle"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:text="@string/ica_use" />
+      <TextView
+        style="@style/IcaHistoryStyle"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:text="@string/ica_rest" />
+    </LinearLayout>
   </LinearLayout>
-  <TextView
-    android:id="@+id/historyText"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    style="@style/IcaHistoryStyle" />
   <ListView
     android:id="@+id/listView"
     android:layout_width="fill_parent"

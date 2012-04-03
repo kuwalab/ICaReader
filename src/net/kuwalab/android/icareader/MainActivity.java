@@ -1,6 +1,9 @@
 package net.kuwalab.android.icareader;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +12,15 @@ import net.kazzz.felica.FeliCaTag;
 import net.kazzz.felica.command.ReadResponse;
 import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -26,35 +33,46 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		TextView messageText = (TextView) findViewById(R.id.messageText);
-		messageText.setText("ICaを端末にかざしてください");
-		messageText.setTextColor(Color.rgb(0xff, 0x80, 0x40));
-		messageText.setBackgroundColor(Color.rgb(0xff, 0xd0, 0xd0));
+		messageText.setText(R.string.ica_first_step);
 
 		onNewIntent(getIntent());
 	}
 
 	private void viewList(String nowRestMoney, List<Map<String, String>> list) {
 		TextView messageText = (TextView) findViewById(R.id.messageText);
-		messageText.setText("残高");
-		messageText.setTextColor(Color.rgb(0xff, 0x80, 0x40));
-		messageText.setBackgroundColor(Color.rgb(0xff, 0xd0, 0xd0));
-
+		messageText.setText(R.string.ica_rest);
 		TextView nowRestMoneyText = (TextView) findViewById(R.id.nowRestMoneyText);
 		nowRestMoneyText.setText(nowRestMoney);
-		nowRestMoneyText.setTextColor(Color.rgb(0xff, 0x80, 0x40));
-		nowRestMoneyText.setBackgroundColor(Color.rgb(0xff, 0xd0, 0xd0));
 
-		TextView historyText = (TextView) findViewById(R.id.historyText);
-		historyText.setText("使用履歴（上から新しい順）");
-		historyText.setBackgroundColor(Color.rgb(0x80, 0x80, 0xff));
+		LinearLayout firstStepLayout = (LinearLayout) findViewById(R.id.firstStepLayout);
+		firstStepLayout.setLayoutParams(new LinearLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		messageText.setLayoutParams(new LinearLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
 		ListView historyListView = (ListView) findViewById(R.id.listView);
+		historyListView.setLayoutParams(new LinearLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+
 		SimpleAdapter adapter = new ICaAdapter(this, list, R.layout.list,
-				new String[] { "no", "reason", "restMoney", "useMoney", "date",
-						"beginTime", "endTime" }, new int[] { R.id.no,
-						R.id.reason, R.id.restMoney, R.id.useMoney, R.id.date,
+				new String[] { "restMoney", "addMoney", "useMoney", "date",
+						"beginTime", "endTime" }, new int[] { R.id.restMoney,
+						R.id.addMoney, R.id.useMoney, R.id.date,
 						R.id.beginTime, R.id.endTime });
 		historyListView.setAdapter(adapter);
+
+		SharedPreferences pref = getSharedPreferences(
+				ICaService.PREFERENCES_NAME, Context.MODE_PRIVATE);
+		Editor edit = pref.edit();
+
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		edit.putString(ICaService.PREFERENCES_CONF_DATE, df.format(new Date()));
+		edit.putString(ICaService.PREFERENCES_REST_MONEY, "￥" + nowRestMoney);
+		edit.commit();
+
+		Intent intent = new Intent();
+		intent.setAction(ICaService.ACTION);
+		sendBroadcast(intent);
 	}
 
 	@Override
@@ -70,7 +88,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	public void read(Parcelable nfcTag) {
+	private void read(Parcelable nfcTag) {
 		try {
 			FeliCaTag f = new FeliCaTag(nfcTag);
 
@@ -94,11 +112,16 @@ public class MainActivity extends Activity {
 				IcaHistory icaHistory = new IcaHistory(result.getBlockData());
 
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("no", String.valueOf(addr + 1));
-				map.put("reason", icaHistory.getReason());
 				map.put("restMoney", icaHistory.getDispRestMoney());
-				map.put("useMoney",
-						String.valueOf(icaHistory.getDispUseMoney()));
+				if (icaHistory.isUse()) {
+					map.put("useMoney",
+							String.valueOf(icaHistory.getDispUseMoney()));
+					map.put("addMoney", "");
+				} else {
+					map.put("useMoney", "");
+					map.put("addMoney",
+							String.valueOf(icaHistory.getDispAddMoney()));
+				}
 				map.put("date", icaHistory.date);
 				map.put("beginTime", icaHistory.beginTime);
 				map.put("endTime", icaHistory.endTime);
