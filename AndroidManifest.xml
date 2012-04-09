@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="net.kuwalab.android.icareader"
-  android:versionCode="110"
-  android:versionName="1.1.0" >
+  android:versionCode="112"
+  android:versionName="1.1.2" >
   <uses-sdk android:minSdkVersion="10" />
   <uses-permission android:name="android.permission.NFC" />
   <uses-feature
