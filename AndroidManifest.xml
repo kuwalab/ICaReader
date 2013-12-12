@@ -1,45 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="net.kuwalab.android.icareader"
-  android:versionCode="112"
-  android:versionName="1.1.2" >
-  <uses-sdk android:minSdkVersion="10" />
-  <uses-permission android:name="android.permission.NFC" />
-  <uses-feature
-    android:name="android.hardware.nfc"
-    android:required="true" />
-  <application
-    android:icon="@drawable/icon"
-    android:label="@string/app_name" >
-    <activity
-      android:name=".MainActivity"
-      android:launchMode="singleTop"
-      android:screenOrientation="portrait" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-      <intent-filter>
-        <action android:name="android.nfc.action.TECH_DISCOVERED" />
-      </intent-filter>
-      <meta-data
-        android:name="android.nfc.action.TECH_DISCOVERED"
-        android:resource="@xml/nfc_tech_filter" />
-    </activity>
-    <receiver
-      android:name=".ICaWidget"
-      android:label="@string/app_name" >
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-      </intent-filter>
-      <meta-data
-        android:name="android.appwidget.provider"
-        android:resource="@xml/widget" />
-    </receiver>
-    <service android:name=".ICaService" android:exported="false">
-      <intent-filter>
-        <action android:name="net.kuwalab.android.icareader.UPDATE" />
-      </intent-filter>
-    </service>
-    </application>
+ package="net.kuwalab.android.icareader"
+ android:versionCode="112"
+ android:versionName="1.1.2" >
+
+ <uses-sdk
+  android:minSdkVersion="10"
+  android:targetSdkVersion="17"/>
+
+ <uses-permission android:name="android.permission.NFC" />
+
+ <uses-feature
+  android:name="android.hardware.nfc"
+  android:required="true" />
+
+ <application
+  android:allowBackup="true"
+  android:icon="@drawable/icon"
+  android:label="@string/app_name"
+  android:theme="@style/AppTheme">
+  <activity
+   android:name=".MainActivity"
+   android:launchMode="singleTop"
+   android:screenOrientation="portrait" >
+   <intent-filter>
+    <action android:name="android.intent.action.MAIN" />
+
+    <category android:name="android.intent.category.LAUNCHER" />
+   </intent-filter>
+   <intent-filter>
+    <action android:name="android.nfc.action.TECH_DISCOVERED" />
+   </intent-filter>
+
+   <meta-data
+    android:name="android.nfc.action.TECH_DISCOVERED"
+    android:resource="@xml/nfc_tech_filter" />
+  </activity>
+
+  <receiver
+   android:name=".ICaWidget"
+   android:label="@string/app_name" >
+   <intent-filter>
+    <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+   </intent-filter>
+
+   <meta-data
+    android:name="android.appwidget.provider"
+    android:resource="@xml/widget" />
+  </receiver>
+
+  <service
+   android:name=".ICaService"
+   android:exported="false" >
+   <intent-filter>
+    <action android:name="net.kuwalab.android.icareader.UPDATE" />
+   </intent-filter>
+  </service>
+ </application>
+
 </manifest>
