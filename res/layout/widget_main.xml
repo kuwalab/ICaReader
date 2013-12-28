@@ -3,12 +3,11 @@
   android:id="@+id/widgetBody"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:layout_marginLeft="2dp"
-  android:layout_marginTop="2dp"
+  android:padding="2dp"
+  android:layout_margin="@dimen/widget_margin"
   android:background="#a0ffffff"
   android:gravity="center"
-  android:orientation="vertical"
-  android:padding="5dp" >
+  android:orientation="vertical">
   <TextView
     style="@style/IcaWidgetStyle"
     android:layout_width="fill_parent"
