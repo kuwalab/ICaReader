@@ -46,13 +46,13 @@ public class MainActivity extends Activity {
 
 		LinearLayout firstStepLayout = (LinearLayout) findViewById(R.id.firstStepLayout);
 		firstStepLayout.setLayoutParams(new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		messageText.setLayoutParams(new LinearLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
 		ListView historyListView = (ListView) findViewById(R.id.listView);
 		historyListView.setLayoutParams(new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 		SimpleAdapter adapter = new ICaAdapter(this, list, R.layout.list,
 				new String[] { "restMoney", "addMoney", "useMoney", "date",
