@@ -81,8 +81,6 @@ public class MainActivity extends Activity {
 
 			Parcelable nfcTag = intent
 					.getParcelableExtra("android.nfc.extra.TAG");
-			// FeliCaLib.IDm idm = new FeliCaLib.IDm(
-			// intent.getByteArrayExtra(NfcAdapter.EXTRA_ID));
 			read(nfcTag);
 		}
 	}
