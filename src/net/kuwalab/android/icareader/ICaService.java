@@ -18,14 +18,16 @@ public class ICaService extends Service {
 	protected static final String PREFERENCES_REST_MONEY = "rest_money";
 
 	@Override
-	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		super.onStartCommand(intent, flags, startId);
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(ACTION);
 		registerReceiver(receiver, filter);
 
 		refresh(getApplicationContext());
+
+		return START_STICKY;
 	}
 
 	@Override
