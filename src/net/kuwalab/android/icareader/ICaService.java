@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.IBinder;
 import android.widget.RemoteViews;
 
@@ -36,16 +37,21 @@ public class ICaService extends Service {
 	}
 
 	private static void refresh(Context context) {
+		Resources res = context.getResources();
 		SharedPreferences pref = context.getSharedPreferences(PREFERENCES_NAME,
 				Context.MODE_PRIVATE);
 
 		AppWidgetManager awm = AppWidgetManager.getInstance(context);
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 				R.layout.widget_main);
-		remoteViews.setTextViewText(R.id.confDate,
-				pref.getString(PREFERENCES_CONF_DATE, "未確認"));
-		remoteViews.setTextViewText(R.id.widetRest,
-				pref.getString(PREFERENCES_REST_MONEY, "￥--,---"));
+		remoteViews.setTextViewText(
+				R.id.confDate,
+				pref.getString(PREFERENCES_CONF_DATE,
+						res.getString(R.string.ica_widget_unconfirmed)));
+		remoteViews.setTextViewText(
+				R.id.widetRest,
+				pref.getString(PREFERENCES_REST_MONEY,
+						res.getString(R.string.ica_widget_default_rest_money)));
 		awm.updateAppWidget(new ComponentName(context, ICaWidget.class),
 				remoteViews);
 	}
