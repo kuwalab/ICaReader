@@ -1,9 +1,7 @@
 package net.kuwalab.android.icareader;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +17,7 @@ import android.content.SharedPreferences.Editor;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.format.DateFormat;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
@@ -64,9 +63,9 @@ public class MainActivity extends Activity {
 		SharedPreferences pref = getSharedPreferences(
 				ICaService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 		Editor edit = pref.edit();
-
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-		edit.putString(ICaService.PREFERENCES_CONF_DATE, df.format(new Date()));
+		edit.putString(ICaService.PREFERENCES_CONF_DATE,
+				DateFormat.format("yyyy/MM/dd", Calendar.getInstance())
+						.toString());
 		edit.putString(ICaService.PREFERENCES_REST_MONEY, "￥" + nowRestMoney);
 		edit.commit();
 
