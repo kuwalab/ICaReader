@@ -19,7 +19,6 @@ public class ICaAdapter extends SimpleAdapter {
 		super(context, data, resource, from, to);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		layoutInflater = LayoutInflater.from(parent.getContext());
@@ -27,6 +26,7 @@ public class ICaAdapter extends SimpleAdapter {
 		convertView = layoutInflater.inflate(R.layout.list, parent, false);
 		ListView listView = (ListView) parent;
 
+		@SuppressWarnings("unchecked")
 		Map<String, Object> data = (Map<String, Object>) listView
 				.getItemAtPosition(position);
 
