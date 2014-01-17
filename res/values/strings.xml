@@ -9,8 +9,9 @@
  <string name="ica_use">使用</string>
  <string name="ica_title">ICa</string>
  <string name="ica_rest">残高</string>
+ <string name="ica_date">%1$4d年%2$2d月%3$2d日</string>
+ <string name="ica_time">%1$02d:%2$02d</string>
  <string name="ica_last_conf_date">最終確認日</string>
  <string name="ica_widget_unconfirmed">未確認</string>
  <string name="ica_widget_default_rest_money">￥--,---</string>
-
 </resources>

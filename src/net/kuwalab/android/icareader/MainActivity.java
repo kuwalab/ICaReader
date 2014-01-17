@@ -119,9 +119,28 @@ public class MainActivity extends Activity {
 					map.put("addMoney",
 							String.valueOf(icaHistory.getDispAddMoney()));
 				}
-				map.put("date", icaHistory.date);
-				map.put("beginTime", icaHistory.beginTime);
-				map.put("endTime", icaHistory.endTime);
+				if (icaHistory.date == null) {
+					map.put("date", "????/??/??");
+				} else {
+					map.put("date",
+							getString(R.string.ica_date, icaHistory.date[0],
+									icaHistory.date[1], icaHistory.date[2]));
+				}
+				if (icaHistory.beginTime == null) {
+					map.put("beginTime", "??:??");
+				} else {
+					map.put("beginTime",
+							getString(R.string.ica_time,
+									icaHistory.beginTime[0],
+									icaHistory.beginTime[1]));
+				}
+				if (icaHistory.endTime == null) {
+					map.put("endTime", "??:??");
+				} else {
+					map.put("endTime",
+							getString(R.string.ica_time, icaHistory.endTime[0],
+									icaHistory.endTime[1]));
+				}
 				list.add(map);
 
 				if (addr == 0) {
@@ -134,6 +153,7 @@ public class MainActivity extends Activity {
 			viewList(nowRestMoney, list);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Toast.makeText(getBaseContext(), "読み込めませんでした。再度試してください。",
 					Toast.LENGTH_LONG).show();
 		}

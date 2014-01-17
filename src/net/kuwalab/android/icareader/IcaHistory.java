@@ -7,11 +7,11 @@ import net.kuwalab.android.util.HexUtil;
 
 public class IcaHistory {
 	/** 乗車日付 */
-	public String date;
+	public int[] date;
 	/** 乗車時刻 */
-	public String beginTime;
+	public int[] beginTime;
 	/** 降車時刻 */
-	public String endTime;
+	public int[] endTime;
 	/** 使用金額 */
 	public int useMoney;
 	/** 残額 */
@@ -46,8 +46,7 @@ public class IcaHistory {
 		restMoney = HexUtil.toInt(Arrays.copyOfRange(historyData, 13, 15));
 	}
 
-	private String getDate(byte[] bytes) {
-		StringBuilder sb = new StringBuilder();
+	private int[] getDate(byte[] bytes) {
 		int year = (bytes[0] >>> 1) + 2000;
 		int month = 0;
 		if ((bytes[0] & 0x01) == 1) {
@@ -56,22 +55,12 @@ public class IcaHistory {
 		month = month + ((bytes[1] >>> 5) & 0x07);
 		int day = (bytes[1] & 0x1F);
 
-		sb.append(year).append("年");
-		if (month < 10) {
-			sb.append(" ");
-		}
-		sb.append(month).append("月");
-		if (day < 10) {
-			sb.append(" ");
-		}
-		sb.append(day).append("日");
-
-		return sb.toString();
+		return new int[] { year, month, day };
 	}
 
-	private String getTime(byte timeByte) {
+	private int[] getTime(byte timeByte) {
 		if (timeByte == 0) {
-			return "--:--";
+			return null;
 		}
 
 		int time = timeByte;
@@ -82,17 +71,8 @@ public class IcaHistory {
 
 		int hour = time / 60;
 		int minute = time % 60;
-		StringBuilder sb = new StringBuilder();
-		if (hour < 10) {
-			sb.append(" ");
-		}
-		sb.append(hour).append(":");
-		if (minute < 10) {
-			sb.append("0");
-		}
-		sb.append(minute);
 
-		return sb.toString();
+		return new int[] { hour, minute };
 	}
 
 	private int getUseMoney(byte[] bytes) {
