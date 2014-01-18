@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
  <style name="IcaRestStyle">
   <item name="android:typeface">monospace</item>
@@ -15,22 +15,44 @@
 
  <style name="IcaStyle">
   <item name="android:typeface">monospace</item>
+  <item name="android:textSize">18sp</item>
+ </style>
+
+ <style name="IcaDateStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:textSize">16sp</item>
+  <item name="android:paddingTop">5dip</item>
+  <item name="android:paddingBottom">2dip</item>
+  </style>
+
+ <style name="IcaTimeStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:textSize">14sp</item>
+  <item name="android:paddingBottom">5dip</item>
+  </style>
+
+ <style name="IcaAddMoneyStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:textColor">#0000ff</item>
+  <item name="android:gravity">right</item>
+  <item name="android:layout_gravity">center_vertical</item>
   <item name="android:textSize">16sp</item>
  </style>
 
- <style name="IcaAddMoneyStyle">
-  <item name="android:textColor">#0000ff</item>
-  <item name="android:gravity">right</item>
- </style>
-
  <style name="IcaUseMoneyStyle">
+  <item name="android:typeface">monospace</item>
   <item name="android:textColor">#ff8040</item>
   <item name="android:gravity">right</item>
+  <item name="android:layout_gravity">center_vertical</item>
+  <item name="android:textSize">16sp</item>
  </style>
 
  <style name="IcaRestMoneyStyle">
+  <item name="android:typeface">monospace</item>
   <item name="android:textColor">#000000</item>
   <item name="android:gravity">right</item>
+  <item name="android:layout_gravity">center_vertical</item>
+  <item name="android:textSize">16sp</item>
  </style>
 
  <style name="IcaWidgetStyle">
