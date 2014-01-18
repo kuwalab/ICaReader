@@ -3,7 +3,10 @@
 
  <string name="app_name">ICa Reader</string>
  <string name="kara">～</string>
+ <string name="yen">￥</string>
  <string name="ica_first_step">ICaを端末にかざしてください</string>
+ <string name="ica_not_ica">ICaでないか、カードが読み込めません。</string>
+ <string name="ica_read_error">読み込めませんでした。再度試してください。</string>
  <string name="ica_use_date">利用日</string>
  <string name="ica_add">積増</string>
  <string name="ica_use">使用</string>
@@ -11,6 +14,8 @@
  <string name="ica_rest">残高</string>
  <string name="ica_date">%1$4d年%2$2d月%3$2d日</string>
  <string name="ica_time">%1$02d:%2$02d</string>
+ <string name="ica_invalid_date">\?\?\?\?/\?\?/\?\?</string>
+ <string name="ica_invalid_time">\?\?:\?\?</string>
  <string name="ica_last_conf_date">最終確認日</string>
  <string name="ica_widget_unconfirmed">未確認</string>
  <string name="ica_widget_default_rest_money">￥--,---</string>

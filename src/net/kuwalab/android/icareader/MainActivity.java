@@ -66,7 +66,8 @@ public class MainActivity extends Activity {
 		edit.putString(ICaService.PREFERENCES_CONF_DATE,
 				DateFormat.format("yyyy/MM/dd", Calendar.getInstance())
 						.toString());
-		edit.putString(ICaService.PREFERENCES_REST_MONEY, "￥" + nowRestMoney);
+		edit.putString(ICaService.PREFERENCES_REST_MONEY,
+				getString(R.string.yen) + nowRestMoney);
 		edit.commit();
 
 		Intent intent = new Intent();
@@ -97,7 +98,7 @@ public class MainActivity extends Activity {
 			byte addr = 0;
 			ReadResponse result = f.readWithoutEncryption(sc, addr);
 			if (result == null) {
-				Toast.makeText(getBaseContext(), "ICaでないか、カードが読み込めません。",
+				Toast.makeText(getBaseContext(), R.string.ica_not_ica,
 						Toast.LENGTH_LONG).show();
 				return;
 			}
@@ -135,21 +136,21 @@ public class MainActivity extends Activity {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText(getBaseContext(), "読み込めませんでした。再度試してください。",
+			Toast.makeText(getBaseContext(), R.string.ica_read_error,
 					Toast.LENGTH_LONG).show();
 		}
 	}
 
 	private String getViewDate(int[] date) {
 		if (date == null) {
-			return "????/??/??";
+			return getString(R.string.ica_invalid_date);
 		}
 		return getString(R.string.ica_date, date[0], date[1], date[2]);
 	}
 
 	private String getViewTime(int[] time) {
 		if (time == null) {
-			return "??:??";
+			return getString(R.string.ica_invalid_time);
 		}
 		return getString(R.string.ica_time, time[0], time[1]);
 	}
