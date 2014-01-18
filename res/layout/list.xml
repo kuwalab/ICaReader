@@ -18,7 +18,7 @@
       android:layout_height="match_parent"
       android:orientation="horizontal" >
       <TextView
-        android:id="@+id/beginTime"
+        android:id="@+id/rideTime"
         style="@style/IcaStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="@string/kara" />
       <TextView
-        android:id="@+id/endTime"
+        android:id="@+id/dropTime"
         style="@style/IcaStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

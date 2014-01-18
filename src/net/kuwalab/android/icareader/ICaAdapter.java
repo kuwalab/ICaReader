@@ -45,12 +45,12 @@ public class ICaAdapter extends SimpleAdapter {
 		restMoneyTextView.setText((String) data.get("restMoney"));
 
 		TextView beginTimeTextView = (TextView) convertView
-				.findViewById(R.id.beginTime);
-		beginTimeTextView.setText((String) data.get("beginTime"));
+				.findViewById(R.id.rideTime);
+		beginTimeTextView.setText((String) data.get("rideTime"));
 
 		TextView endTimeTextView = (TextView) convertView
-				.findViewById(R.id.endTime);
-		endTimeTextView.setText((String) data.get("endTime"));
+				.findViewById(R.id.dropTime);
+		endTimeTextView.setText((String) data.get("dropTime"));
 
 		return convertView;
 	}

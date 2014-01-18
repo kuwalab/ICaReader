@@ -55,9 +55,9 @@ public class MainActivity extends Activity {
 
 		SimpleAdapter adapter = new ICaAdapter(this, list, R.layout.list,
 				new String[] { "restMoney", "addMoney", "useMoney", "date",
-						"beginTime", "endTime" }, new int[] { R.id.restMoney,
-						R.id.addMoney, R.id.useMoney, R.id.date,
-						R.id.beginTime, R.id.endTime });
+						"rideTime", "dropTime" }, new int[] { R.id.restMoney,
+						R.id.addMoney, R.id.useMoney, R.id.date, R.id.rideTime,
+						R.id.dropTime });
 		historyListView.setAdapter(adapter);
 
 		SharedPreferences pref = getSharedPreferences(
@@ -120,8 +120,8 @@ public class MainActivity extends Activity {
 							String.valueOf(icaHistory.getDispAddMoney()));
 				}
 				map.put("date", getViewDate(icaHistory.getDate()));
-				map.put("beginTime", getViewTime(icaHistory.getRideTime()));
-				map.put("endTime", getViewTime(icaHistory.getDropTime()));
+				map.put("rideTime", getViewTime(icaHistory.getRideTime()));
+				map.put("dropTime", getViewTime(icaHistory.getDropTime()));
 				list.add(map);
 
 				if (addr == 0) {
