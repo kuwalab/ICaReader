@@ -5,19 +5,74 @@ import java.util.Arrays;
 
 import net.kuwalab.android.util.HexUtil;
 
+/**
+ * ICaの乗車履歴<br>
+ * 結構データが欠落している事がある。
+ * 
+ * @author kuwalab
+ * 
+ */
 public class IcaHistory {
 	/** 乗車日付 */
-	public int[] date;
+	private int[] date;
 	/** 乗車時刻 */
-	public int[] beginTime;
+	private int[] rideTime;
 	/** 降車時刻 */
-	public int[] endTime;
+	private int[] dropTime;
 	/** 使用金額 */
-	public int useMoney;
+	private int useMoney;
 	/** 残額 */
-	public int restMoney;
+	private int restMoney;
 
 	public static final boolean USE = true;
+
+	/**
+	 * 乗車日付の取得。<br>
+	 * データが怪しい場合はnull。
+	 * 
+	 * @return 乗車日付
+	 */
+	public int[] getDate() {
+		return date;
+	}
+
+	/**
+	 * 乗車時刻の取得。<br>
+	 * データが怪しい場合はnull
+	 * 
+	 * @return 乗車時刻
+	 */
+	public int[] getRideTime() {
+		return rideTime;
+	}
+
+	/**
+	 * 降車時刻の取得<br>
+	 * データが怪しい場合はnull
+	 * 
+	 * @return 降車時刻
+	 */
+	public int[] getDropTime() {
+		return dropTime;
+	}
+
+	/**
+	 * 運賃もしくは、積み増し金額の取得
+	 * 
+	 * @return 運賃もしくは積み増し金額
+	 */
+	public int getUseMoney() {
+		return useMoney;
+	}
+
+	/**
+	 * 残金の取得
+	 * 
+	 * @return 残金
+	 */
+	public int getRestMoney() {
+		return restMoney;
+	}
 
 	public boolean isUse() {
 		return useMoney < 0;
@@ -39,14 +94,14 @@ public class IcaHistory {
 	}
 
 	public IcaHistory(byte[] historyData) {
-		date = getDate(Arrays.copyOfRange(historyData, 0, 2));
-		beginTime = getTime(historyData[5]);
-		endTime = getTime(historyData[2]);
-		useMoney = getUseMoney(Arrays.copyOfRange(historyData, 11, 13));
+		date = analyzeDate(Arrays.copyOfRange(historyData, 0, 2));
+		rideTime = analyzeTime(historyData[5]);
+		dropTime = analyzeTime(historyData[2]);
+		useMoney = analyzeUseMoney(Arrays.copyOfRange(historyData, 11, 13));
 		restMoney = HexUtil.toInt(Arrays.copyOfRange(historyData, 13, 15));
 	}
 
-	private int[] getDate(byte[] bytes) {
+	private int[] analyzeDate(byte[] bytes) {
 		int year = (bytes[0] >>> 1) + 2000;
 		int month = 0;
 		if ((bytes[0] & 0x01) == 1) {
@@ -58,7 +113,7 @@ public class IcaHistory {
 		return new int[] { year, month, day };
 	}
 
-	private int[] getTime(byte timeByte) {
+	private int[] analyzeTime(byte timeByte) {
 		if (timeByte == 0) {
 			return null;
 		}
@@ -75,7 +130,7 @@ public class IcaHistory {
 		return new int[] { hour, minute };
 	}
 
-	private int getUseMoney(byte[] bytes) {
+	private int analyzeUseMoney(byte[] bytes) {
 		int use = 0;
 		use = use | (bytes[0] << 8);
 		use = use | bytes[1];

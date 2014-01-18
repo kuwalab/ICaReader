@@ -119,28 +119,9 @@ public class MainActivity extends Activity {
 					map.put("addMoney",
 							String.valueOf(icaHistory.getDispAddMoney()));
 				}
-				if (icaHistory.date == null) {
-					map.put("date", "????/??/??");
-				} else {
-					map.put("date",
-							getString(R.string.ica_date, icaHistory.date[0],
-									icaHistory.date[1], icaHistory.date[2]));
-				}
-				if (icaHistory.beginTime == null) {
-					map.put("beginTime", "??:??");
-				} else {
-					map.put("beginTime",
-							getString(R.string.ica_time,
-									icaHistory.beginTime[0],
-									icaHistory.beginTime[1]));
-				}
-				if (icaHistory.endTime == null) {
-					map.put("endTime", "??:??");
-				} else {
-					map.put("endTime",
-							getString(R.string.ica_time, icaHistory.endTime[0],
-									icaHistory.endTime[1]));
-				}
+				map.put("date", getViewDate(icaHistory.getDate()));
+				map.put("beginTime", getViewTime(icaHistory.getRideTime()));
+				map.put("endTime", getViewTime(icaHistory.getDropTime()));
 				list.add(map);
 
 				if (addr == 0) {
@@ -159,4 +140,17 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private String getViewDate(int[] date) {
+		if (date == null) {
+			return "????/??/??";
+		}
+		return getString(R.string.ica_date, date[0], date[1], date[2]);
+	}
+
+	private String getViewTime(int[] time) {
+		if (time == null) {
+			return "??:??";
+		}
+		return getString(R.string.ica_time, time[0], time[1]);
+	}
 }
