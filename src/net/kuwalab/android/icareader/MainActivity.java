@@ -108,22 +108,7 @@ public class MainActivity extends Activity {
 
 			while (result != null && result.getStatusFlag1() == 0) {
 				IcaHistory icaHistory = new IcaHistory(result.getBlockData());
-
-				Map<String, String> map = new HashMap<String, String>();
-				map.put("restMoney", icaHistory.getDispRestMoney());
-				if (icaHistory.isUse()) {
-					map.put("useMoney",
-							String.valueOf(icaHistory.getDispUseMoney()));
-					map.put("addMoney", "");
-				} else {
-					map.put("useMoney", "");
-					map.put("addMoney",
-							String.valueOf(icaHistory.getDispAddMoney()));
-				}
-				map.put("date", getViewDate(icaHistory.getDate()));
-				map.put("rideTime", getViewTime(icaHistory.getRideTime()));
-				map.put("dropTime", getViewTime(icaHistory.getDropTime()));
-				list.add(map);
+				list.add(icaHistoryToMap(icaHistory));
 
 				if (addr == 0) {
 					nowRestMoney = icaHistory.getDispRestMoney();
@@ -139,6 +124,24 @@ public class MainActivity extends Activity {
 			Toast.makeText(getBaseContext(), R.string.ica_read_error,
 					Toast.LENGTH_LONG).show();
 		}
+	}
+
+	private Map<String, String> icaHistoryToMap(IcaHistory icaHistory) {
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("restMoney", icaHistory.getDispRestMoney());
+		if (icaHistory.isUse()) {
+			map.put("useMoney", String.valueOf(icaHistory.getDispUseMoney()));
+			map.put("addMoney", "");
+		} else {
+			map.put("useMoney", "");
+			map.put("addMoney", String.valueOf(icaHistory.getDispAddMoney()));
+		}
+		map.put("date", getViewDate(icaHistory.getDate()));
+		map.put("rideTime", getViewTime(icaHistory.getRideTime()));
+		map.put("dropTime", getViewTime(icaHistory.getDropTime()));
+
+		return map;
 	}
 
 	private String getViewDate(int[] date) {
