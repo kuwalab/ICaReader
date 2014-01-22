@@ -1,59 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical" >
+
+ <LinearLayout
+  android:id="@+id/firstStepLayout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical" >
+  android:orientation="horizontal"
+  android:paddingBottom="@dimen/activity_vertical_margin_half"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin_half" >
+
+  <TextView
+   android:id="@+id/messageText"
+   style="@style/IcaRestStyle"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent" />
+
+  <TextView
+   android:id="@+id/nowRestMoneyText"
+   style="@style/IcaRestStyle"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:gravity="right" />
+ </LinearLayout>
+
+ <LinearLayout
+  style="@style/IcaHistoryStyle"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal"
+  android:paddingBottom="@dimen/activity_vertical_margin_half"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin_half" >
+
+  <TextView
+   style="@style/IcaHistoryStyle"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:text="@string/ica_use_date" />
+
   <LinearLayout
-    android:id="@+id/firstStepLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
-    <TextView
-      android:id="@+id/messageText"
-      style="@style/IcaRestStyle"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
-    <TextView
-      android:id="@+id/nowRestMoneyText"
-      style="@style/IcaRestStyle"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:gravity="right" />
-  </LinearLayout>
-  <LinearLayout
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:gravity="right"
+   android:orientation="horizontal" >
+
+   <TextView
     style="@style/IcaHistoryStyle"
-    android:layout_width="match_parent"
+    android:layout_width="65dip"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
-    <TextView
-      style="@style/IcaHistoryStyle"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/ica_use_date" />
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:gravity="right"
-      android:orientation="horizontal" >
-      <TextView
-        style="@style/IcaHistoryStyle"
-        android:layout_width="65dip"
-        android:layout_height="wrap_content"
-        android:text="@string/ica_add" />
-      <TextView
-        style="@style/IcaHistoryStyle"
-        android:layout_width="65dip"
-        android:layout_height="wrap_content"
-        android:text="@string/ica_use" />
-      <TextView
-        style="@style/IcaHistoryStyle"
-        android:layout_width="65dip"
-        android:layout_height="wrap_content"
-        android:text="@string/ica_rest" />
-    </LinearLayout>
+    android:text="@string/ica_add" />
+
+   <TextView
+    style="@style/IcaHistoryStyle"
+    android:layout_width="65dip"
+    android:layout_height="wrap_content"
+    android:text="@string/ica_use" />
+
+   <TextView
+    style="@style/IcaHistoryStyle"
+    android:layout_width="65dip"
+    android:layout_height="wrap_content"
+    android:text="@string/ica_rest" />
   </LinearLayout>
-  <ListView
-    android:id="@+id/listView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+ </LinearLayout>
+
+ <ListView
+  android:id="@+id/listView"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content" />
+
 </LinearLayout>
