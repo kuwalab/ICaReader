@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	private List<IcaHistory> icaHistoryList;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +39,19 @@ public class MainActivity extends Activity {
 		onNewIntent(getIntent());
 	}
 
-	private void viewList(String nowRestMoney, List<Map<String, String>> list) {
+	private void viewList() {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+		String nowRestMoney = "0";
+
+		for (int i = 0; i < icaHistoryList.size(); i++) {
+			IcaHistory icaHistory = icaHistoryList.get(i);
+			list.add(icaHistoryToMap(icaHistory));
+
+			if (i == 0) {
+				nowRestMoney = icaHistory.getDispRestMoney();
+			}
+		}
+
 		TextView messageText = (TextView) findViewById(R.id.messageText);
 		messageText.setText(R.string.ica_rest);
 		TextView nowRestMoneyText = (TextView) findViewById(R.id.nowRestMoneyText);
@@ -103,22 +117,14 @@ public class MainActivity extends Activity {
 				return;
 			}
 
-			List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-			String nowRestMoney = "0";
-
+			icaHistoryList = new ArrayList<IcaHistory>(20);
 			while (result != null && result.getStatusFlag1() == 0) {
-				IcaHistory icaHistory = new IcaHistory(result.getBlockData());
-				list.add(icaHistoryToMap(icaHistory));
-
-				if (addr == 0) {
-					nowRestMoney = icaHistory.getDispRestMoney();
-				}
+				icaHistoryList.add(new IcaHistory(result.getBlockData()));
 				addr++;
 				result = f.readWithoutEncryption(sc, addr);
 			}
 
-			viewList(nowRestMoney, list);
-
+			viewList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Toast.makeText(getBaseContext(), R.string.ica_read_error,
