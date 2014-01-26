@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import net.kuwalab.android.util.HexUtil;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * ICaの乗車履歴<br>
@@ -12,7 +14,7 @@ import net.kuwalab.android.util.HexUtil;
  * @author kuwalab
  * 
  */
-public class IcaHistory {
+public class IcaHistory implements Parcelable {
 	/** 乗車日付 */
 	private int[] date;
 	/** 乗車時刻 */
@@ -25,6 +27,40 @@ public class IcaHistory {
 	private int restMoney;
 
 	public static final boolean USE = true;
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeIntArray(date);
+		dest.writeIntArray(rideTime);
+		dest.writeIntArray(dropTime);
+		dest.writeInt(useMoney);
+		dest.writeInt(restMoney);
+	}
+
+	public static final Parcelable.Creator<IcaHistory> CREATOR = new Parcelable.Creator<IcaHistory>() {
+		@Override
+		public IcaHistory createFromParcel(Parcel source) {
+			return new IcaHistory(source);
+		}
+
+		@Override
+		public IcaHistory[] newArray(int size) {
+			return new IcaHistory[size];
+		}
+	};
+
+	private IcaHistory(Parcel in) {
+		in.readIntArray(date);
+		in.readIntArray(rideTime);
+		in.readIntArray(dropTime);
+		useMoney = in.readInt();
+		restMoney = in.readInt();
+	}
 
 	/**
 	 * 乗車日付の取得。<br>

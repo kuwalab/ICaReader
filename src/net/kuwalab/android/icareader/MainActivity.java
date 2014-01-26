@@ -26,7 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	private List<IcaHistory> icaHistoryList;
+	private ArrayList<IcaHistory> icaHistoryList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,31 @@ public class MainActivity extends Activity {
 		TextView messageText = (TextView) findViewById(R.id.messageText);
 		messageText.setText(R.string.ica_first_step);
 
-		onNewIntent(getIntent());
+		Intent intent = getIntent();
+		String action = intent.getAction();
+		if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
+			onNewIntent(intent);
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (icaHistoryList != null && icaHistoryList.size() > 0) {
+			viewList();
+		}
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putParcelableArrayList("test", icaHistoryList);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		icaHistoryList = savedInstanceState.getParcelableArrayList("test");
 	}
 
 	private void viewList() {
@@ -91,13 +115,11 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onNewIntent(Intent intent) {
-		String action = intent.getAction();
-		if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
+		Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
+		read(nfcTag);
 
-			Parcelable nfcTag = intent
-					.getParcelableExtra("android.nfc.extra.TAG");
-			read(nfcTag);
-		}
+		// 呼び出しIntentを取り消す
+		setIntent(new Intent());
 	}
 
 	private void read(Parcelable nfcTag) {
@@ -117,14 +139,13 @@ public class MainActivity extends Activity {
 				return;
 			}
 
-			icaHistoryList = new ArrayList<IcaHistory>(20);
+			icaHistoryList = new ArrayList<IcaHistory>();
 			while (result != null && result.getStatusFlag1() == 0) {
 				icaHistoryList.add(new IcaHistory(result.getBlockData()));
+
 				addr++;
 				result = f.readWithoutEncryption(sc, addr);
 			}
-
-			viewList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Toast.makeText(getBaseContext(), R.string.ica_read_error,
