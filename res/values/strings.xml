@@ -19,4 +19,5 @@
  <string name="ica_last_conf_date">最終確認日</string>
  <string name="ica_widget_unconfirmed">未確認</string>
  <string name="ica_widget_default_rest_money">￥--,---</string>
+ <string name="ica_widget_date">yyyy/MM/dd</string>
 </resources>

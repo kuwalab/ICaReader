@@ -101,9 +101,10 @@ public class MainActivity extends Activity {
 		SharedPreferences pref = getSharedPreferences(
 				ICaService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 		Editor edit = pref.edit();
-		edit.putString(ICaService.PREFERENCES_CONF_DATE,
-				DateFormat.format("yyyy/MM/dd", Calendar.getInstance())
-						.toString());
+		edit.putString(
+				ICaService.PREFERENCES_CONF_DATE,
+				DateFormat.format(getString(R.string.ica_widget_date),
+						Calendar.getInstance()).toString());
 		edit.putString(ICaService.PREFERENCES_REST_MONEY,
 				getString(R.string.yen) + nowRestMoney);
 		edit.commit();
