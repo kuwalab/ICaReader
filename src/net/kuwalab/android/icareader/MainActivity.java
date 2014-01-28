@@ -25,6 +25,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * カードを読み取るメインクラス
+ * 
+ * @author kuwalab
+ * 
+ */
 public class MainActivity extends Activity {
 	private ArrayList<IcaHistory> icaHistoryList;
 
@@ -43,6 +49,9 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	/**
+	 * 描画時にデータがあれば、そのデータを表示
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
