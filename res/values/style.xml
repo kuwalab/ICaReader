@@ -55,6 +55,7 @@
   <item name="android:textColor">#ff8040</item>
   <item name="android:background">#ffd0d0</item>
   <item name="android:gravity">center</item>
+  <item name="android:textSize">10sp</item>
  </style>
 
  <style name="IcaWidgetNormalStyle">
