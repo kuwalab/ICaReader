@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/widgetBody"
+ android:id="@+id/widgetBody"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:layout_marginLeft="@dimen/widget_margin"
+ android:layout_marginRight="@dimen/widget_margin"
+ android:paddingRight="@dimen/widget_padding"
+ android:paddingLeft="@dimen/widget_padding"
+ android:background="#a0ffffff"
+ android:gravity="center"
+ android:orientation="vertical" >
+
+ <TextView
+  style="@style/IcaWidgetStyle"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:padding="2dp"
-  android:layout_margin="@dimen/widget_margin"
-  android:background="#a0ffffff"
-  android:gravity="center"
-  android:orientation="vertical">
-  <TextView
-    style="@style/IcaWidgetStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/ica_title" />
-  <TextView
-    style="@style/IcaWidgetNormalStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/ica_last_conf_date" />
-  <TextView
-    android:id="@+id/confDate"
-    style="@style/IcaWidgetNormalStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="right" />
-  <TextView
-    style="@style/IcaWidgetNormalStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/ica_rest" />
-  <TextView
-    android:id="@+id/widetRest"
-    style="@style/IcaWidgetNormalStyle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="right" />
+  android:layout_height="wrap_content"
+  android:text="@string/ica_title" />
+
+ <TextView
+  style="@style/IcaWidgetNormalStyle"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/ica_last_conf_date" />
+
+ <TextView
+  android:id="@+id/confDate"
+  style="@style/IcaWidgetNormalStyle"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:gravity="right" />
+
+ <TextView
+  style="@style/IcaWidgetNormalStyle"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/ica_rest" />
+
+ <TextView
+  android:id="@+id/widetRest"
+  style="@style/IcaWidgetNormalStyle"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:gravity="right" />
+
 </LinearLayout>
