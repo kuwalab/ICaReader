@@ -14,7 +14,7 @@ import android.os.Parcelable;
  * @author kuwalab
  * 
  */
-public class IcaHistory implements Parcelable {
+public class ICaHistory implements Parcelable {
 	/** 乗車日付 */
 	private int[] date;
 	/** 乗車時刻 */
@@ -42,19 +42,19 @@ public class IcaHistory implements Parcelable {
 		dest.writeInt(restMoney);
 	}
 
-	public static final Parcelable.Creator<IcaHistory> CREATOR = new Parcelable.Creator<IcaHistory>() {
+	public static final Parcelable.Creator<ICaHistory> CREATOR = new Parcelable.Creator<ICaHistory>() {
 		@Override
-		public IcaHistory createFromParcel(Parcel source) {
-			return new IcaHistory(source);
+		public ICaHistory createFromParcel(Parcel source) {
+			return new ICaHistory(source);
 		}
 
 		@Override
-		public IcaHistory[] newArray(int size) {
-			return new IcaHistory[size];
+		public ICaHistory[] newArray(int size) {
+			return new ICaHistory[size];
 		}
 	};
 
-	private IcaHistory(Parcel in) {
+	private ICaHistory(Parcel in) {
 		in.readIntArray(date);
 		in.readIntArray(rideTime);
 		in.readIntArray(dropTime);
@@ -129,7 +129,7 @@ public class IcaHistory implements Parcelable {
 		return decimalFormat.format(restMoney);
 	}
 
-	public IcaHistory(byte[] historyData) {
+	public ICaHistory(byte[] historyData) {
 		date = analyzeDate(Arrays.copyOfRange(historyData, 0, 2));
 		rideTime = analyzeTime(historyData[5]);
 		dropTime = analyzeTime(historyData[2]);

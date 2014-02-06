@@ -32,7 +32,7 @@ import android.widget.Toast;
  * 
  */
 public class MainActivity extends Activity {
-	private ArrayList<IcaHistory> icaHistoryList;
+	private ArrayList<ICaHistory> icaHistoryList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
 		String nowRestMoney = "0";
 
 		for (int i = 0; i < icaHistoryList.size(); i++) {
-			IcaHistory icaHistory = icaHistoryList.get(i);
+			ICaHistory icaHistory = icaHistoryList.get(i);
 			list.add(icaHistoryToMap(icaHistory));
 
 			if (i == 0) {
@@ -149,9 +149,9 @@ public class MainActivity extends Activity {
 				return;
 			}
 
-			icaHistoryList = new ArrayList<IcaHistory>();
+			icaHistoryList = new ArrayList<ICaHistory>();
 			while (result != null && result.getStatusFlag1() == 0) {
-				icaHistoryList.add(new IcaHistory(result.getBlockData()));
+				icaHistoryList.add(new ICaHistory(result.getBlockData()));
 
 				addr++;
 				result = f.readWithoutEncryption(sc, addr);
@@ -163,7 +163,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private Map<String, String> icaHistoryToMap(IcaHistory icaHistory) {
+	private Map<String, String> icaHistoryToMap(ICaHistory icaHistory) {
 		Map<String, String> map = new HashMap<String, String>();
 
 		map.put("restMoney", icaHistory.getDispRestMoney());
