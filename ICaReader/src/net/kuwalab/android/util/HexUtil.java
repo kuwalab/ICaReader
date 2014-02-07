@@ -49,17 +49,7 @@ public class HexUtil {
 	 * @return 変換後の文字列
 	 */
 	public static String toHexString(byte oneByte) {
-		StringBuilder sb = new StringBuilder();
-
-		String hex = Integer.toHexString(oneByte);
-		if (hex.length() == 1) {
-			sb.append("0");
-		} else if (hex.length() > 2) {
-			hex = hex.substring(hex.length() - 2, hex.length());
-		}
-		sb.append(hex);
-
-		return sb.toString();
+		return String.format("%02x", oneByte);
 	}
 
 	/**
