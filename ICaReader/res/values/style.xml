@@ -9,25 +9,21 @@
   <item name="android:textColor">#000000</item>
   <item name="android:background">#d0d0d0</item>
   <item name="android:typeface">monospace</item>
-  <item name="android:textSize">18sp</item>
   <item name="android:gravity">center</item>
  </style>
 
  <style name="IcaStyle">
   <item name="android:typeface">monospace</item>
-  <item name="android:textSize">18sp</item>
  </style>
 
  <style name="IcaDateStyle">
   <item name="android:typeface">monospace</item>
-  <item name="android:textSize">16sp</item>
   <item name="android:paddingTop">5dip</item>
   <item name="android:paddingBottom">2dip</item>
  </style>
 
  <style name="IcaTimeStyle">
   <item name="android:typeface">monospace</item>
-  <item name="android:textSize">14sp</item>
   <item name="android:paddingBottom">5dip</item>
  </style>
 
@@ -35,7 +31,6 @@
   <item name="android:typeface">monospace</item>
   <item name="android:gravity">right</item>
   <item name="android:layout_gravity">center_vertical</item>
-  <item name="android:textSize">16sp</item>
  </style>
 
  <style name="IcaAddMoneyStyle" parent="IcaMoneyStyle">

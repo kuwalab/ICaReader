@@ -18,7 +18,8 @@
    android:id="@+id/date"
    style="@style/IcaDateStyle"
    android:layout_width="wrap_content"
-   android:layout_height="wrap_content" />
+   android:layout_height="wrap_content"
+   android:textAppearance="?android:attr/textAppearanceMedium" />
 
   <LinearLayout
    android:layout_width="wrap_content"
@@ -29,19 +30,22 @@
     android:id="@+id/rideTime"
     style="@style/IcaTimeStyle"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceSmall" />
 
    <TextView
     style="@style/IcaTimeStyle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/kara" />
+    android:text="@string/kara"
+    android:textAppearance="?android:attr/textAppearanceSmall" />
 
    <TextView
     android:id="@+id/dropTime"
     style="@style/IcaTimeStyle"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceSmall" />
   </LinearLayout>
  </LinearLayout>
 
@@ -55,19 +59,22 @@
    android:id="@+id/addMoney"
    style="@style/IcaAddMoneyStyle"
    android:layout_width="65dip"
-   android:layout_height="wrap_content" />
+   android:layout_height="wrap_content" 
+    android:textAppearance="?android:attr/textAppearanceSmall" />
 
   <TextView
    android:id="@+id/useMoney"
    style="@style/IcaUseMoneyStyle"
    android:layout_width="65dip"
-   android:layout_height="wrap_content" />
+   android:layout_height="wrap_content" 
+    android:textAppearance="?android:attr/textAppearanceSmall" />
 
   <TextView
    android:id="@+id/restMoney"
    style="@style/IcaRestMoneyStyle"
    android:layout_width="65dip"
-   android:layout_height="wrap_content" />
+   android:layout_height="wrap_content" 
+    android:textAppearance="?android:attr/textAppearanceSmall" />
  </LinearLayout>
 
 </LinearLayout>
