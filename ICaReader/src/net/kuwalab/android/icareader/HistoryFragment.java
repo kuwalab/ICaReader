@@ -36,17 +36,8 @@ public class HistoryFragment extends Fragment {
 	}
 
 	public void viewList(ArrayList<ICaHistory> icaHistoryList) {
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		String nowRestMoney = "0";
-
-		for (int i = 0; i < icaHistoryList.size(); i++) {
-			ICaHistory icaHistory = icaHistoryList.get(i);
-			list.add(icaHistoryToMap(icaHistory));
-
-			if (i == 0) {
-				nowRestMoney = icaHistory.getDispRestMoney();
-			}
-		}
+		List<Map<String, String>> list = icaHistoryListToMap(icaHistoryList);
+		String nowRestMoney = icaHistoryList.get(0).getDispRestMoney();
 
 		TextView messageText = (TextView) getActivity().findViewById(
 				R.id.messageText);
@@ -88,6 +79,18 @@ public class HistoryFragment extends Fragment {
 		Intent intent = new Intent();
 		intent.setAction(ICaService.ACTION);
 		getActivity().sendBroadcast(intent);
+	}
+
+	private List<Map<String, String>> icaHistoryListToMap(
+			List<ICaHistory> icaHistoryList) {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+
+		for (int i = 0; i < icaHistoryList.size(); i++) {
+			ICaHistory icaHistory = icaHistoryList.get(i);
+			list.add(icaHistoryToMap(icaHistory));
+		}
+
+		return list;
 	}
 
 	private Map<String, String> icaHistoryToMap(ICaHistory icaHistory) {
