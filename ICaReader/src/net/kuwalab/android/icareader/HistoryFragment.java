@@ -23,7 +23,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 /**
- * カードを読み取るメインクラス
+ * カード情報を表示するFragment
  * 
  * @author kuwalab
  * 
