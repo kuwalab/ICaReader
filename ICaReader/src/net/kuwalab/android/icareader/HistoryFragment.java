@@ -6,11 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.kazzz.felica.FeliCaTag;
+import net.kazzz.felica.command.ReadResponse;
+import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -21,6 +25,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * カード情報を表示するFragment
@@ -29,6 +34,8 @@ import android.widget.TextView;
  * 
  */
 public class HistoryFragment extends Fragment {
+	private ArrayList<ICaHistory> icaHistoryList;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -124,4 +131,59 @@ public class HistoryFragment extends Fragment {
 		}
 		return getString(R.string.ica_time, time[0], time[1]);
 	}
+
+	/**
+	 * 描画時にデータがあれば、そのデータを表示
+	 */
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (icaHistoryList != null && icaHistoryList.size() > 0) {
+			viewList(icaHistoryList);
+		}
+	}
+
+	// @Override
+	// public void onSaveInstanceState(Bundle outState) {
+	// super.onSaveInstanceState(outState);
+	// outState.putParcelableArrayList("test", icaHistoryList);
+	// }
+
+	// @Override
+	// protected void onRestoreInstanceState(Bundle savedInstanceState) {
+	// super.onRestoreInstanceState(savedInstanceState);
+	// icaHistoryList = savedInstanceState.getParcelableArrayList("test");
+	// }
+
+	public void read(Parcelable nfcTag) {
+		try {
+			FeliCaTag f = new FeliCaTag(nfcTag);
+
+			// polling は IDm、PMmを取得するのに必要
+			f.polling(0x80EF);
+
+			// サービスコード読み取り
+			ServiceCode sc = new ServiceCode(0x898F);
+			byte addr = 0;
+			ReadResponse result = f.readWithoutEncryption(sc, addr);
+			if (result == null) {
+				Toast.makeText(getActivity(), R.string.ica_not_ica,
+						Toast.LENGTH_LONG).show();
+				return;
+			}
+
+			icaHistoryList = new ArrayList<ICaHistory>();
+			while (result != null && result.getStatusFlag1() == 0) {
+				icaHistoryList.add(new ICaHistory(result.getBlockData()));
+
+				addr++;
+				result = f.readWithoutEncryption(sc, addr);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Toast.makeText(getActivity(), R.string.ica_read_error,
+					Toast.LENGTH_LONG).show();
+		}
+	}
+
 }
