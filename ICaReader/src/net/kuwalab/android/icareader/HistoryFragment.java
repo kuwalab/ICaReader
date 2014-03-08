@@ -143,17 +143,19 @@ public class HistoryFragment extends Fragment {
 		}
 	}
 
-	// @Override
-	// public void onSaveInstanceState(Bundle outState) {
-	// super.onSaveInstanceState(outState);
-	// outState.putParcelableArrayList("test", icaHistoryList);
-	// }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putParcelableArrayList("test", icaHistoryList);
+	}
 
-	// @Override
-	// protected void onRestoreInstanceState(Bundle savedInstanceState) {
-	// super.onRestoreInstanceState(savedInstanceState);
-	// icaHistoryList = savedInstanceState.getParcelableArrayList("test");
-	// }
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		if (savedInstanceState != null) {
+			icaHistoryList = savedInstanceState.getParcelableArrayList("test");
+		}
+	}
 
 	public void read(Parcelable nfcTag) {
 		try {
