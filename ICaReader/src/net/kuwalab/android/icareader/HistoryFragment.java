@@ -42,7 +42,7 @@ public class HistoryFragment extends Fragment {
 		return inflater.inflate(R.layout.history_fragment, container, false);
 	}
 
-	public void viewList(ArrayList<ICaHistory> icaHistoryList) {
+	private void viewList(ArrayList<ICaHistory> icaHistoryList) {
 		List<Map<String, String>> list = icaHistoryListToMap(icaHistoryList);
 		String nowRestMoney = icaHistoryList.get(0).getDispRestMoney();
 
