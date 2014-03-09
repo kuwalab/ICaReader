@@ -187,5 +187,4 @@ public class HistoryFragment extends Fragment {
 					Toast.LENGTH_LONG).show();
 		}
 	}
-
 }
