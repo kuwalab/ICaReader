@@ -138,7 +138,7 @@ public class ICaHistory implements Parcelable {
 	}
 
 	private int[] analyzeDate(byte[] bytes) {
-		int year = (bytes[0] >>> 1) + 2000;
+		int year = ((bytes[0] >>> 1) & 0x7f) + 2000;
 		int month = 0;
 		if ((bytes[0] & 0x01) == 1) {
 			month = month + 8;
