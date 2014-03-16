@@ -168,8 +168,10 @@ public class ICaHistory implements Parcelable {
 
 	private int analyzeUseMoney(byte[] bytes) {
 		int use = 0;
-		use = use | (bytes[0] << 8);
-		use = use | bytes[1];
+		byte high = (byte) (bytes[0] & 0x0f);
+		use = use | (high << 8);
+		int row = bytes[1] & 0x00ff;
+		use = use | row;
 		if (use >= 0) {
 			use = use & 0x0fff;
 		}
