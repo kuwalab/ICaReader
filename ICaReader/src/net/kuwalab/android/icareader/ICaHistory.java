@@ -169,11 +169,15 @@ public class ICaHistory implements Parcelable {
 	private int analyzeUseMoney(byte[] bytes) {
 		int use = 0;
 		byte high = (byte) (bytes[0] & 0x0f);
+		// 5bit目が1ならマイナス
+		boolean isMinus = (high >= (byte) 0x08);
 		use = use | (high << 8);
 		int row = bytes[1] & 0x00ff;
 		use = use | row;
-		if (use >= 0) {
-			use = use & 0x0fff;
+		use = use & 0x0fff;
+		// マイナスの場合上位ビットを1にする
+		if (isMinus) {
+			use = use | 0xfffff000;
 		}
 
 		return use * 10;
