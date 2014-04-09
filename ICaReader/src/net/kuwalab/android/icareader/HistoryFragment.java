@@ -9,10 +9,12 @@ import java.util.Map;
 import net.kazzz.felica.FeliCaTag;
 import net.kazzz.felica.command.ReadResponse;
 import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
+import android.widget.RemoteViews;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +38,9 @@ import android.widget.Toast;
  */
 public class HistoryFragment extends Fragment {
 	private ArrayList<ICaHistory> icaHistoryList;
+	protected static final String PREFERENCES_NAME = "ICA_DATA";
+	protected static final String PREFERENCES_CONF_DATE = "conf_date";
+	protected static final String PREFERENCES_REST_MONEY = "rest_money";
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,19 +79,33 @@ public class HistoryFragment extends Fragment {
 		historyListView.setAdapter(adapter);
 
 		SharedPreferences pref = getActivity().getSharedPreferences(
-				ICaService.PREFERENCES_NAME, Context.MODE_PRIVATE);
+				PREFERENCES_NAME, Context.MODE_PRIVATE);
 		Editor edit = pref.edit();
 		edit.putString(
-				ICaService.PREFERENCES_CONF_DATE,
+				PREFERENCES_CONF_DATE,
 				DateFormat.format(getString(R.string.ica_widget_date),
 						Calendar.getInstance()).toString());
-		edit.putString(ICaService.PREFERENCES_REST_MONEY,
-				getString(R.string.yen) + nowRestMoney);
+		edit.putString(PREFERENCES_REST_MONEY, getString(R.string.yen)
+				+ nowRestMoney);
 		edit.commit();
 
-		Intent intent = new Intent();
-		intent.setAction(ICaService.ACTION);
-		getActivity().sendBroadcast(intent);
+		// ウィジェット
+		Resources res = getActivity().getResources();
+
+		AppWidgetManager awm = AppWidgetManager.getInstance(getActivity());
+		RemoteViews remoteViews = new RemoteViews(getActivity()
+				.getPackageName(), R.layout.widget_main);
+		remoteViews.setTextViewText(
+				R.id.confDate,
+				pref.getString(PREFERENCES_CONF_DATE,
+						res.getString(R.string.ica_widget_unconfirmed)));
+		remoteViews.setTextViewText(
+				R.id.widetRest,
+				pref.getString(PREFERENCES_REST_MONEY,
+						res.getString(R.string.ica_widget_default_rest_money)));
+		awm.updateAppWidget(new ComponentName(getActivity(), ICaWidget.class),
+				remoteViews);
+
 	}
 
 	private List<Map<String, String>> icaHistoryListToMap(
