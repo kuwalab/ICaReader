@@ -105,7 +105,6 @@ public class HistoryFragment extends Fragment {
 						res.getString(R.string.ica_widget_default_rest_money)));
 		awm.updateAppWidget(new ComponentName(getActivity(), ICaWidget.class),
 				remoteViews);
-
 	}
 
 	private List<Map<String, String>> icaHistoryListToMap(
