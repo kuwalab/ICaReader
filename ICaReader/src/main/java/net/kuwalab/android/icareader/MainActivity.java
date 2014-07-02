@@ -10,38 +10,37 @@ import android.widget.TextView;
 
 /**
  * カードを読み取るメインクラス
- * 
+ *
  * @author kuwalab
- * 
  */
 public class MainActivity extends FragmentActivity {
-	private HistoryFragment historyFragment;
+    private HistoryFragment historyFragment;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
 
-		TextView messageText = (TextView) findViewById(R.id.messageText);
-		messageText.setText(R.string.ica_first_step);
-		FragmentManager manager = getSupportFragmentManager();
-		historyFragment = (HistoryFragment) manager
-				.findFragmentById(R.id.historyFragment);
+        TextView messageText = (TextView) findViewById(R.id.messageText);
+        messageText.setText(R.string.ica_first_step);
+        FragmentManager manager = getSupportFragmentManager();
+        historyFragment = (HistoryFragment) manager
+                .findFragmentById(R.id.historyFragment);
 
-		Intent intent = getIntent();
-		String action = intent.getAction();
-		if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
-			onNewIntent(intent);
-		}
-	}
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
+            onNewIntent(intent);
+        }
+    }
 
-	@Override
-	public void onNewIntent(Intent intent) {
-		Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
-		historyFragment.read(nfcTag);
+    @Override
+    public void onNewIntent(Intent intent) {
+        Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
+        historyFragment.read(nfcTag);
 
-		// 呼び出しIntentを取り消す
-		setIntent(new Intent());
-	}
+        // 呼び出しIntentを取り消す
+        setIntent(new Intent());
+    }
 
 }
