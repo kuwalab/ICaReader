@@ -22,6 +22,6 @@ android {
 }
 
 dependencies {
-    compile project(':nfcfelicalib')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.+'
 }
