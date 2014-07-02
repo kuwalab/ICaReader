@@ -18,6 +18,8 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -112,7 +114,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private List<Map<String, String>> icaHistoryListToMap(
-            List<ICaHistory> icaHistoryList) {
+            @NonNull List<ICaHistory> icaHistoryList) {
         List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 
         for (int i = 0; i < icaHistoryList.size(); i++) {
@@ -123,7 +125,7 @@ public class HistoryFragment extends Fragment {
         return list;
     }
 
-    private Map<String, String> icaHistoryToMap(ICaHistory icaHistory) {
+    private Map<String, String> icaHistoryToMap(@NonNull ICaHistory icaHistory) {
         Map<String, String> map = new HashMap<String, String>();
 
         map.put("restMoney", icaHistory.getDispRestMoney());
@@ -141,14 +143,14 @@ public class HistoryFragment extends Fragment {
         return map;
     }
 
-    private String getViewDate(int[] date) {
+    private String getViewDate(@Nullable int[] date) {
         if (date == null) {
             return getString(R.string.ica_invalid_date);
         }
         return getString(R.string.ica_date, date[0], date[1], date[2]);
     }
 
-    private String getViewTime(int[] time) {
+    private String getViewTime(@Nullable int[] time) {
         if (time == null) {
             return getString(R.string.ica_invalid_time);
         }

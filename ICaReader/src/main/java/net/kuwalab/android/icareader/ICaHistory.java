@@ -7,6 +7,7 @@ import net.kuwalab.android.util.HexUtil;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 /**
  * ICaの乗車履歴<br>
@@ -139,7 +140,7 @@ public class ICaHistory implements Parcelable {
         return decimalFormat.format(restMoney);
     }
 
-    public ICaHistory(byte[] historyData) {
+    public ICaHistory(@NonNull byte[] historyData) {
         date = analyzeDate(Arrays.copyOfRange(historyData, 0, 2));
         rideTime = analyzeTime(historyData[5]);
         dropTime = analyzeTime(historyData[2]);
@@ -147,7 +148,7 @@ public class ICaHistory implements Parcelable {
         restMoney = HexUtil.toInt(Arrays.copyOfRange(historyData, 13, 15));
     }
 
-    private int[] analyzeDate(byte[] bytes) {
+    private int[] analyzeDate(@NonNull byte[] bytes) {
         int year = ((bytes[0] >>> 1) & 0x7f) + 2000;
         int month = 0;
         if ((bytes[0] & 0x01) == 1) {
@@ -176,7 +177,7 @@ public class ICaHistory implements Parcelable {
         return new int[]{hour, minute};
     }
 
-    private int analyzeUseMoney(byte[] bytes) {
+    private int analyzeUseMoney(@NonNull byte[] bytes) {
         int use = 0;
         byte high = (byte) (bytes[0] & 0x0f);
         // 5bit目が1ならマイナス
