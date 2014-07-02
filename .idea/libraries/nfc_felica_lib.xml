@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="nfc-felica-lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/iCaReader/libs/nfc-felica-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+ <style name="IcaRestStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:textSize">25sp</item>
+ </style>
+
+ <style name="IcaHistoryStyle">
+  <item name="android:textColor">#000000</item>
+  <item name="android:background">#d0d0d0</item>
+  <item name="android:typeface">monospace</item>
+  <item name="android:gravity">center</item>
+ </style>
+
+ <style name="IcaStyle">
+  <item name="android:typeface">monospace</item>
+ </style>
+
+ <style name="IcaDateStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:paddingTop">5dip</item>
+  <item name="android:paddingBottom">2dip</item>
+ </style>
+
+ <style name="IcaTimeStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:paddingBottom">5dip</item>
+ </style>
+
+ <style name="IcaMoneyStyle">
+  <item name="android:typeface">monospace</item>
+  <item name="android:gravity">right</item>
+  <item name="android:layout_gravity">center_vertical</item>
+ </style>
+
+ <style name="IcaAddMoneyStyle" parent="IcaMoneyStyle">
+  <item name="android:textColor">#0000ff</item>
+ </style>
+
+ <style name="IcaUseMoneyStyle" parent="IcaMoneyStyle">
+  <item name="android:textColor">#ff8040</item>
+ </style>
+
+ <style name="IcaRestMoneyStyle" parent="IcaMoneyStyle">
+  <item name="android:textColor">#000000</item>
+ </style>
+
+ <style name="IcaWidgetStyle">
+  <item name="android:textColor">#ff8040</item>
+  <item name="android:background">#ffd0d0</item>
+  <item name="android:gravity">center</item>
+  <item name="android:textSize">10sp</item>
+ </style>
+
+ <style name="IcaWidgetNormalStyle">
+  <item name="android:textColor">#000000</item>
+  <item name="android:textSize">10sp</item>
+ </style>
+
+</resources>

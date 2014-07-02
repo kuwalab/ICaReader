@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/arata/AndroidStudioProjects/ICaReader/nfcfelicalib/src/main/res" />
+        <source path="/Users/arata/AndroidStudioProjects/ICaReader/nfcfelicalib/build/generated/res/rs/release" />
+        <source path="/Users/arata/AndroidStudioProjects/ICaReader/nfcfelicalib/build/generated/res/generated/release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/arata/AndroidStudioProjects/ICaReader/nfcfelicalib/src/release/res" />
+    </dataSet>
+
+</merger>

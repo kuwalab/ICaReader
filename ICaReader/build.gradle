@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        applicationId "net.kuwalab.android.icareader"
+        minSdkVersion 10
+        targetSdkVersion 19
+
+        testApplicationId "net.kuwalab.android.icareader.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':nfcfelicalib')
+    compile 'com.android.support:appcompat-v7:19.+'
+}

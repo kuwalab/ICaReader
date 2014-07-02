@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ICaReader.iml" filepath="$PROJECT_DIR$/ICaReader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iCaReader/iCaReader.iml" filepath="$PROJECT_DIR$/iCaReader/iCaReader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nfcfelicalib/nfcfelicalib.iml" filepath="$PROJECT_DIR$/nfcfelicalib/nfcfelicalib.iml" />
+    </modules>
+  </component>
+</project>
+
