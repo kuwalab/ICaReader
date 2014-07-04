@@ -54,21 +54,21 @@
 
    <TextView
     style="@style/IcaHistoryStyle"
-    android:layout_width="65dip"
+    android:layout_width="60dp"
     android:layout_height="wrap_content"
     android:text="@string/ica_add"
     android:textAppearance="?android:attr/textAppearanceMedium" />
 
    <TextView
     style="@style/IcaHistoryStyle"
-    android:layout_width="65dip"
+    android:layout_width="50dp"
     android:layout_height="wrap_content"
     android:text="@string/ica_use"
     android:textAppearance="?android:attr/textAppearanceMedium" />
 
    <TextView
     style="@style/IcaHistoryStyle"
-    android:layout_width="65dip"
+    android:layout_width="60dp"
     android:layout_height="wrap_content"
     android:text="@string/ica_rest"
     android:textAppearance="?android:attr/textAppearanceMedium" />
