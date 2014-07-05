@@ -39,10 +39,11 @@ import android.widget.Toast;
  * @author kuwalab
  */
 public class HistoryFragment extends Fragment {
-    private ArrayList<ICaHistory> icaHistoryList;
     protected static final String PREFERENCES_NAME = "ICA_DATA";
     protected static final String PREFERENCES_CONF_DATE = "conf_date";
     protected static final String PREFERENCES_REST_MONEY = "rest_money";
+
+    private ArrayList<ICaHistory> icaHistoryList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
