@@ -102,8 +102,7 @@ public class HistoryFragment extends Fragment {
             @NonNull List<ICaHistory> icaHistoryList) {
         List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 
-        for (int i = 0; i < icaHistoryList.size(); i++) {
-            ICaHistory icaHistory = icaHistoryList.get(i);
+        for (ICaHistory icaHistory : icaHistoryList) {
             list.add(icaHistoryToMap(icaHistory));
         }
 

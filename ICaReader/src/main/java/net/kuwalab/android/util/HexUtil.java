@@ -15,8 +15,8 @@ public class HexUtil {
     public static String toHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < bytes.length; i++) {
-            sb.append(toHexString(bytes[i]));
+        for (byte aByte : bytes) {
+            sb.append(toHexString(aByte));
         }
 
         return sb.toString();
