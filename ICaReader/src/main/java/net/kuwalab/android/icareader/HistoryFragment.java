@@ -94,23 +94,7 @@ public class HistoryFragment extends Fragment {
         edit.commit();
 
         // ウィジェット
-        Resources res = getActivity().getResources();
-
-        AppWidgetManager awm = AppWidgetManager.getInstance(getActivity());
-        RemoteViews remoteViews = new RemoteViews(getActivity()
-                .getPackageName(), R.layout.widget_main);
-        remoteViews.setTextViewText(
-                R.id.confDate,
-                pref.getString(PREFERENCES_CONF_DATE,
-                        res.getString(R.string.ica_widget_unconfirmed))
-        );
-        remoteViews.setTextViewText(
-                R.id.widetRest,
-                pref.getString(PREFERENCES_REST_MONEY,
-                        res.getString(R.string.ica_widget_default_rest_money))
-        );
-        awm.updateAppWidget(new ComponentName(getActivity(), ICaWidget.class),
-                remoteViews);
+        ICaWidget.update(getActivity(), AppWidgetManager.getInstance(getActivity()), pref);
     }
 
     private List<Map<String, String>> icaHistoryListToMap(

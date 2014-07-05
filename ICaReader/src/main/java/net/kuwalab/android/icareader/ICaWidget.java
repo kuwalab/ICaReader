@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
 /**
@@ -21,6 +22,10 @@ public class ICaWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager awm, int[] ids) {
         SharedPreferences pref = context.getSharedPreferences(PREFERENCES_NAME,
                 Context.MODE_PRIVATE);
+        ICaWidget.update(context, awm, pref);
+    }
+
+    public static void update(@NonNull Context context, @NonNull AppWidgetManager awm, @NonNull SharedPreferences pref) {
         Resources res = context.getResources();
 
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
