@@ -1,5 +1,7 @@
 package net.kuwalab.android.util;
 
+import android.support.annotation.NonNull;
+
 /**
  * バイナリデータを扱うためのユーティリティ
  *
@@ -12,7 +14,7 @@ public class HexUtil {
      * @param bytes 変換する配列
      * @return 変換後の文字列
      */
-    public static String toHexString(byte[] bytes) {
+    public static String toHexString(@NonNull byte[] bytes) {
         StringBuilder sb = new StringBuilder();
 
         for (byte aByte : bytes) {
@@ -28,7 +30,7 @@ public class HexUtil {
      * @param bytes 変換する配列
      * @return 変換後の文字列配列
      */
-    public static String[] toHexStringArray(byte[] bytes) {
+    public static String[] toHexStringArray(@NonNull byte[] bytes) {
         String[] result = new String[bytes.length];
 
         for (int i = 0; i < bytes.length; i++) {
@@ -54,7 +56,7 @@ public class HexUtil {
      * @param bytes 変換する配列
      * @return 変換後の数値
      */
-    public static int toInt(byte[] bytes) {
+    public static int toInt(@NonNull byte[] bytes) {
         int result = 0;
         int base = 1;
 
