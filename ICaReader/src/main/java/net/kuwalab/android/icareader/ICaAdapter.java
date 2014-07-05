@@ -12,8 +12,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class ICaAdapter extends SimpleAdapter {
-    private LayoutInflater layoutInflater;
-
     public ICaAdapter(Context context, List<? extends Map<String, ?>> data,
                       int resource, String[] from, int[] to) {
         super(context, data, resource, from, to);
@@ -21,7 +19,7 @@ public class ICaAdapter extends SimpleAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        layoutInflater = LayoutInflater.from(parent.getContext());
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
         convertView = layoutInflater.inflate(R.layout.list, parent, false);
         ListView listView = (ListView) parent;
