@@ -2,7 +2,9 @@ package net.kuwalab.android.icareader;
 
 import android.test.AndroidTestCase;
 
-public class ICaHistoryTest extends AndroidTestCase {
+import junit.framework.TestCase;
+
+public class ICaHistoryTest extends TestCase {
     public void test通常の値() {
         byte[] bytes = new byte[16];
         // 2001/1/1

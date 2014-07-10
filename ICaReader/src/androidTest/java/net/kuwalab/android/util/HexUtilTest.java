@@ -1,8 +1,8 @@
 package net.kuwalab.android.util;
 
-import android.test.AndroidTestCase;
+import junit.framework.TestCase;
 
-public class HexUtilTest extends AndroidTestCase {
+public class HexUtilTest extends TestCase {
     private static final byte x0_b0000_0000 = 0;
     private static final byte x1_b0000_0001 = 1;
     private static final byte x15_b0000_1111 = 15;
