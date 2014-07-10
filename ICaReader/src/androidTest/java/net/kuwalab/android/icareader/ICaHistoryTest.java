@@ -1,7 +1,5 @@
 package net.kuwalab.android.icareader;
 
-import android.test.AndroidTestCase;
-
 import junit.framework.TestCase;
 
 public class ICaHistoryTest extends TestCase {
