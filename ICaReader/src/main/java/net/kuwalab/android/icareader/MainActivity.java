@@ -21,8 +21,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        TextView messageText = (TextView) findViewById(R.id.messageText);
-        messageText.setText(R.string.ica_first_step);
         FragmentManager manager = getSupportFragmentManager();
         historyFragment = (HistoryFragment) manager
                 .findFragmentById(R.id.historyFragment);

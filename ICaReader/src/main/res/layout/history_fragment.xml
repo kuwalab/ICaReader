@@ -18,7 +18,8 @@
    android:id="@+id/messageText"
    style="@style/IcaRestStyle"
    android:layout_width="match_parent"
-   android:layout_height="match_parent" />
+   android:layout_height="match_parent"
+   android:text="@string/ica_first_step"/>
 
   <TextView
    android:id="@+id/nowRestMoneyText"
