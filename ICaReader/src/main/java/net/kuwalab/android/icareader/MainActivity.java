@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.view.Menu;
 
 /**
  * カードを読み取るメインクラス
@@ -29,6 +30,12 @@ public class MainActivity extends FragmentActivity {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
             onNewIntent(intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
