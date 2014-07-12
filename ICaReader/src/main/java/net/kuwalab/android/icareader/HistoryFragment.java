@@ -8,20 +8,21 @@ import java.util.Map;
 
 import net.kazzz.felica.FeliCaTag;
 import net.kazzz.felica.command.ReadResponse;
+import net.kazzz.felica.lib.FeliCaLib;
 import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
+import net.kuwalab.android.util.HexUtil;
 
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -172,6 +173,8 @@ public class HistoryFragment extends Fragment {
 
             // polling は IDm、PMmを取得するのに必要
             f.polling(0x80EF);
+            FeliCaLib.IDm idm = f.getIDm();
+            Log.i("###", HexUtil.toHexString(idm.getBytes()));
 
             // サービスコード読み取り
             ServiceCode sc = new ServiceCode(0x898F);
