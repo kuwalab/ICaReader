@@ -33,12 +33,6 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
     public void onNewIntent(Intent intent) {
         Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
         historyFragment.read(nfcTag);
