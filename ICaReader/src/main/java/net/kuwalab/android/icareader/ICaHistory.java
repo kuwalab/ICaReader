@@ -1,13 +1,13 @@
 package net.kuwalab.android.icareader;
 
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
-import net.kuwalab.android.util.HexUtil;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+
+import net.kuwalab.android.util.HexUtil;
+
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 /**
  * ICaの乗車履歴<br>

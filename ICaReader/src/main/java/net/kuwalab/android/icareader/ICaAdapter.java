@@ -1,8 +1,5 @@
 package net.kuwalab.android.icareader;
 
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import java.util.List;
+import java.util.Map;
 
 public class ICaAdapter extends SimpleAdapter {
     public ICaAdapter(Context context, List<? extends Map<String, ?>> data,

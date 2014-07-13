@@ -1,17 +1,5 @@
 package net.kuwalab.android.icareader;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import net.kazzz.felica.FeliCaTag;
-import net.kazzz.felica.command.ReadResponse;
-import net.kazzz.felica.lib.FeliCaLib;
-import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
-import net.kuwalab.android.util.HexUtil;
-
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -29,10 +17,21 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import android.widget.RemoteViews;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import net.kazzz.felica.FeliCaTag;
+import net.kazzz.felica.command.ReadResponse;
+import net.kazzz.felica.lib.FeliCaLib;
+import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
+import net.kuwalab.android.util.HexUtil;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * カード情報を表示するFragment
