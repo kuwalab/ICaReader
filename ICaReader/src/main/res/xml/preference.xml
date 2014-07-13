@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+ <PreferenceCategory
+  android:key="category1"
+  android:title="履歴データ">
+  <SwitchPreference
+   android:key="checkbox_preference"
+   android:summary="ICaの使用履歴を端末に保管します"
+   android:title="履歴データを保管"/>
+ </PreferenceCategory>
+</PreferenceScreen>

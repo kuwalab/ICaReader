@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * カードを読み取るメインクラス
@@ -37,7 +38,17 @@ public class MainActivity extends FragmentActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    @Override
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(getApplicationContext(), ICaPreferenceActivity.class));
+                return true;
+            default:
+                return false;
+        }
+    }
     @Override
     public void onNewIntent(Intent intent) {
         Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
