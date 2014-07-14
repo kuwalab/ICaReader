@@ -3,7 +3,7 @@
  <PreferenceCategory
   android:key="category1"
   android:title="履歴データ">
-  <SwitchPreference
+  <CheckBoxPreference
    android:key="checkbox_preference"
    android:summary="ICaの使用履歴を端末に保管します"
    android:title="履歴データを保管"/>
