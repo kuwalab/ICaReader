@@ -17,6 +17,10 @@ import java.util.Arrays;
  */
 public class ICaHistory implements Parcelable {
     /**
+     * データベースに保管し、同一データのチェックに使うための生データ
+     */
+    private String rawData;
+    /**
      * 乗車日付
      */
     private int[] date;
@@ -36,8 +40,6 @@ public class ICaHistory implements Parcelable {
      * 残額
      */
     private int restMoney;
-
-    public static final boolean USE = true;
 
     @Override
     public int describeContents() {
@@ -71,6 +73,14 @@ public class ICaHistory implements Parcelable {
         in.readIntArray(dropTime);
         useMoney = in.readInt();
         restMoney = in.readInt();
+    }
+
+    /**
+     * データベースに保管し、同一データのチェックに使うための生データを返す。
+     * @return 生データ
+     */
+    public String getRawData() {
+        return rawData;
     }
 
     /**
@@ -141,6 +151,7 @@ public class ICaHistory implements Parcelable {
     }
 
     public ICaHistory(@NonNull byte[] historyData) {
+        rawData = HexUtil.toHexString(historyData);
         date = analyzeDate(Arrays.copyOfRange(historyData, 0, 2));
         rideTime = analyzeTime(historyData[5]);
         dropTime = analyzeTime(historyData[2]);

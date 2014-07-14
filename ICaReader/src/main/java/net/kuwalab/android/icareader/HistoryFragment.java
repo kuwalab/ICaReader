@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -173,7 +174,6 @@ public class HistoryFragment extends Fragment {
             // polling は IDm、PMmを取得するのに必要
             f.polling(0x80EF);
             FeliCaLib.IDm idm = f.getIDm();
-            Log.i("###", HexUtil.toHexString(idm.getBytes()));
 
             // サービスコード読み取り
             ServiceCode sc = new ServiceCode(0x898F);
@@ -192,6 +192,9 @@ public class HistoryFragment extends Fragment {
                 addr++;
                 result = f.readWithoutEncryption(sc, addr);
             }
+
+            ICaDao icaDao = new ICaDao(getActivity());
+            icaDao.insertICaHistory(HexUtil.toHexString(idm.getBytes()), icaHistoryList);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getActivity(), R.string.ica_read_error,
