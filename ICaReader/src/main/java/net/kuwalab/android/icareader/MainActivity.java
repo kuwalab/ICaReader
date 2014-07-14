@@ -38,8 +38,8 @@ public class MainActivity extends FragmentActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    @Override
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
@@ -49,6 +49,7 @@ public class MainActivity extends FragmentActivity {
                 return false;
         }
     }
+
     @Override
     public void onNewIntent(Intent intent) {
         Parcelable nfcTag = intent.getParcelableExtra("android.nfc.extra.TAG");
@@ -57,5 +58,4 @@ public class MainActivity extends FragmentActivity {
         // 呼び出しIntentを取り消す
         setIntent(new Intent());
     }
-
 }
