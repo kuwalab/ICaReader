@@ -172,6 +172,7 @@ public class HistoryFragment extends Fragment {
             // polling は IDm、PMmを取得するのに必要
             f.polling(0x80EF);
             FeliCaLib.IDm idm = f.getIDm();
+            String idmString = HexUtil.toHexString(idm.getBytes());
 
             // サービスコード読み取り
             ServiceCode sc = new ServiceCode(0x898F);
@@ -192,7 +193,27 @@ public class HistoryFragment extends Fragment {
             }
 
             ICaDao icaDao = new ICaDao(getActivity());
-            icaDao.insertICaHistory(HexUtil.toHexString(idm.getBytes()), icaHistoryList);
+            String maxRawData = icaDao.getMaxRaw(idmString);
+            List<ICaHistory> registerICaHistoryList = new ArrayList<ICaHistory>();
+            boolean nothing = true;
+            for (int i = 0; i < icaHistoryList.size(); i++) {
+                if (icaHistoryList.get(i).getRawData().equals(maxRawData)) {
+                    nothing = false;
+                    i++;
+                    for (; i < icaHistoryList.size(); i++) {
+                        registerICaHistoryList.add(icaHistoryList.get(i));
+                    }
+                }
+            }
+            if (nothing) {
+                registerICaHistoryList = icaHistoryList;
+            }
+
+            if (registerICaHistoryList.size() > 0) {
+                String readDate = DateFormat.format(getString(R.string.ica_db_date),
+                        Calendar.getInstance()).toString();
+                icaDao.insertICaHistory(idmString, readDate, registerICaHistoryList);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getActivity(), R.string.ica_read_error,

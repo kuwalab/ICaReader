@@ -20,6 +20,7 @@ public class ICaDbHelper extends SQLiteOpenHelper {
             "CREATE TABLE ica_history(" +
             "  id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "  idm TEXT NOT NULL," +
+            "  read_date TEXT NOT NULL," +
             "  raw_data TEXT NOT NULL," +
             "  year INTEGER," +
             "  month INTEGER," +
