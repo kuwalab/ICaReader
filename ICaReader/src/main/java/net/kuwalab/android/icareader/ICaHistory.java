@@ -16,29 +16,19 @@ import java.util.Arrays;
  * @author kuwalab
  */
 public class ICaHistory implements Parcelable {
-    /**
-     * データベースに保管し、同一データのチェックに使うための生データ
-     */
+    private String idm;
+    private String readDate;
+    /** データベースに保管し、同一データのチェックに使うための生データ */
     private String rawData;
-    /**
-     * 乗車日付
-     */
+    /** 乗車日付 */
     private int[] date;
-    /**
-     * 乗車時刻
-     */
+    /** 乗車時刻 */
     private int[] rideTime;
-    /**
-     * 降車時刻
-     */
+    /** 降車時刻 */
     private int[] dropTime;
-    /**
-     * 使用金額
-     */
+    /** 使用金額 */
     private int useMoney;
-    /**
-     * 残額
-     */
+    /** 残額 */
     private int restMoney;
 
     @Override
@@ -203,5 +193,37 @@ public class ICaHistory implements Parcelable {
         }
 
         return use * 10;
+    }
+
+    /**
+     * IDmを取得する
+     * @return IDm
+     */
+    public String getIdm() {
+        return idm;
+    }
+
+    /**
+     * IDmをセットする
+     * @param idm IDm
+     */
+    public void setIdm(String idm) {
+        this.idm = idm;
+    }
+
+    /**
+     * 読み込んだ日を取得する
+     * @return 読み込んだ日
+     */
+    public String getReadDate() {
+        return readDate;
+    }
+
+    /**
+     * 読み込んだ日をセットする
+     * @param readDate 読み込んだ日
+     */
+    public void setReadDate(String readDate) {
+        this.readDate = readDate;
     }
 }
