@@ -73,7 +73,7 @@ public class HistoryFragment extends Fragment {
         historyListView.setLayoutParams(new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
-        SimpleAdapter adapter = new ICaAdapter(getActivity(), list,
+        SimpleAdapter adapter = new SimpleAdapter(getActivity(), list,
                 R.layout.list, new String[]{"restMoney", "addMoney",
                 "useMoney", "date", "rideTime", "dropTime"},
                 new int[]{R.id.restMoney, R.id.addMoney, R.id.useMoney,
