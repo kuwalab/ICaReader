@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="horizontal">
+
+ <fragment
+  android:id="@+id/cardFragment"
+  android:name="net.kuwalab.android.icareader.CardFragment"
+  android:layout_width="160dp"
+  android:layout_height="match_parent"
+  android:layout_weight="0"/>
+
+ <fragment
+  android:id="@+id/historyFragment"
+  android:name="net.kuwalab.android.icareader.HistoryFragment"
+  android:layout_width="0dp"
+  android:layout_height="match_parent"
+  android:layout_weight="1"/>
+
+</LinearLayout>
