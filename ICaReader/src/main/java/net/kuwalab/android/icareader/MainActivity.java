@@ -4,22 +4,25 @@ import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.view.Menu;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
 /**
  * カードを読み取るメインクラス
  *
  * @author kuwalab
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
     private HistoryFragment historyFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
         FragmentManager manager = getSupportFragmentManager();
         historyFragment = (HistoryFragment) manager
