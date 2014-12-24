@@ -1,8 +1,15 @@
 package net.kuwalab.android.icareader;
 
-import junit.framework.TestCase;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import android.support.test.runner.AndroidJUnit4;
 
-public class ICaHistoryTest extends TestCase {
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith(AndroidJUnit4.class)
+public class ICaHistoryTest {
+    @Test
     public void test通常の値() {
         byte[] bytes = new byte[16];
         // 2001/1/1
@@ -20,17 +27,18 @@ public class ICaHistoryTest extends TestCase {
         bytes[14] = (byte) 0x88;
 
         ICaHistory icaHistory = new ICaHistory(bytes);
-        assertEquals("年", icaHistory.getDate()[0], 2001);
-        assertEquals("月", icaHistory.getDate()[1], 1);
-        assertEquals("日", icaHistory.getDate()[2], 1);
-        assertEquals("乗車時", icaHistory.getRideTime()[0], 8);
-        assertEquals("乗車分", icaHistory.getRideTime()[1], 0);
-        assertEquals("降車時", icaHistory.getDropTime()[0], 20);
-        assertEquals("乗車分", icaHistory.getDropTime()[1], 0);
-        assertEquals("使用金額", icaHistory.getUseMoney(), 500);
-        assertEquals("残り金額", icaHistory.getRestMoney(), 5000);
+        assertThat("年", icaHistory.getDate()[0], is(2001));
+        assertThat("月", icaHistory.getDate()[1], is(1));
+        assertThat("日", icaHistory.getDate()[2], is(1));
+        assertThat("乗車時", icaHistory.getRideTime()[0], is(8));
+        assertThat("乗車分", icaHistory.getRideTime()[1], is(0));
+        assertThat("降車時", icaHistory.getDropTime()[0], is(20));
+        assertThat("乗車分", icaHistory.getDropTime()[1], is(0));
+        assertThat("使用金額", icaHistory.getUseMoney(), is(500));
+        assertThat("残り金額", icaHistory.getRestMoney(), is(5000));
     }
 
+    @Test
     public void test下限値() {
         byte[] bytes = new byte[16];
         // 2000/1/1
@@ -48,17 +56,18 @@ public class ICaHistoryTest extends TestCase {
         bytes[14] = (byte) 0x00;
 
         ICaHistory icaHistory = new ICaHistory(bytes);
-        assertEquals("年", icaHistory.getDate()[0], 2000);
-        assertEquals("月", icaHistory.getDate()[1], 1);
-        assertEquals("日", icaHistory.getDate()[2], 1);
-        assertEquals("乗車時", icaHistory.getRideTime()[0], 0);
-        assertEquals("乗車分", icaHistory.getRideTime()[1], 10);
-        assertEquals("降車時", icaHistory.getDropTime()[0], 0);
-        assertEquals("乗車分", icaHistory.getDropTime()[1], 10);
-        assertEquals("使用金額", icaHistory.getUseMoney(), -20480);
-        assertEquals("残り金額", icaHistory.getRestMoney(), 0);
+        assertThat("年", icaHistory.getDate()[0], is(2000));
+        assertThat("月", icaHistory.getDate()[1], is(1));
+        assertThat("日", icaHistory.getDate()[2], is(1));
+        assertThat("乗車時", icaHistory.getRideTime()[0], is(0));
+        assertThat("乗車分", icaHistory.getRideTime()[1], is(10));
+        assertThat("降車時", icaHistory.getDropTime()[0], is(0));
+        assertThat("乗車分", icaHistory.getDropTime()[1], is(10));
+        assertThat("使用金額", icaHistory.getUseMoney(), is(-20480));
+        assertThat("残り金額", icaHistory.getRestMoney(), is(0));
     }
 
+    @Test
     public void test上限値() {
         byte[] bytes = new byte[16];
         // 2099/12/31
@@ -76,14 +85,14 @@ public class ICaHistoryTest extends TestCase {
         bytes[14] = (byte) 0xff;
 
         ICaHistory icaHistory = new ICaHistory(bytes);
-        assertEquals("年", icaHistory.getDate()[0], 2099);
-        assertEquals("月", icaHistory.getDate()[1], 12);
-        assertEquals("日", icaHistory.getDate()[2], 31);
-        assertEquals("乗車時", icaHistory.getRideTime()[0], 23);
-        assertEquals("乗車分", icaHistory.getRideTime()[1], 50);
-        assertEquals("降車時", icaHistory.getDropTime()[0], 23);
-        assertEquals("乗車分", icaHistory.getDropTime()[1], 50);
-        assertEquals("使用金額", icaHistory.getUseMoney(), 20470);
-        assertEquals("残り金額", icaHistory.getRestMoney(), 65535);
+        assertThat("年", icaHistory.getDate()[0], is(2099));
+        assertThat("月", icaHistory.getDate()[1], is(12));
+        assertThat("日", icaHistory.getDate()[2], is(31));
+        assertThat("乗車時", icaHistory.getRideTime()[0], is(23));
+        assertThat("乗車分", icaHistory.getRideTime()[1], is(50));
+        assertThat("降車時", icaHistory.getDropTime()[0], is(23));
+        assertThat("乗車分", icaHistory.getDropTime()[1], is(50));
+        assertThat("使用金額", icaHistory.getUseMoney(), is(20470));
+        assertThat("残り金額", icaHistory.getRestMoney(), is(65535));
     }
 }
