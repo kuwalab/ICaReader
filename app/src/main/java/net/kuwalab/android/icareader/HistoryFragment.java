@@ -1,21 +1,9 @@
 package net.kuwalab.android.icareader;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import net.kazzz.felica.FeliCaTag;
-import net.kazzz.felica.command.ReadResponse;
-import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
-
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -28,10 +16,19 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import android.widget.RemoteViews;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import net.kazzz.felica.FeliCaTag;
+import net.kazzz.felica.command.ReadResponse;
+import net.kazzz.felica.lib.FeliCaLib.ServiceCode;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * カード情報を表示するFragment
@@ -100,7 +97,7 @@ public class HistoryFragment extends Fragment {
 
     private List<Map<String, String>> icaHistoryListToMap(
             @NonNull List<ICaHistory> icaHistoryList) {
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        List<Map<String, String>> list = new ArrayList<>();
 
         for (ICaHistory icaHistory : icaHistoryList) {
             list.add(icaHistoryToMap(icaHistory));
@@ -110,7 +107,7 @@ public class HistoryFragment extends Fragment {
     }
 
     private Map<String, String> icaHistoryToMap(@NonNull ICaHistory icaHistory) {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
 
         map.put("restMoney", icaHistory.getDispRestMoney());
         if (icaHistory.isUse()) {
@@ -183,7 +180,7 @@ public class HistoryFragment extends Fragment {
                 return;
             }
 
-            icaHistoryList = new ArrayList<ICaHistory>();
+            icaHistoryList = new ArrayList<>();
             while (result != null && result.getStatusFlag1() == 0) {
                 icaHistoryList.add(new ICaHistory(result.getBlockData()));
 
