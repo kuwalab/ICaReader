@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
- package="net.kuwalab.android.icareader">
+<manifest package="net.kuwalab.android.icareader"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
  <uses-permission android:name="android.permission.NFC" />
 
@@ -31,7 +31,7 @@
 
   <receiver
    android:name=".ICaWidget"
-   android:label="@string/app_name" >
+   android:label="@string/app_name">
    <intent-filter>
     <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
    </intent-filter>
