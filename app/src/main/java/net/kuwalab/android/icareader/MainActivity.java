@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
             dialog.setContentView(R.layout.webview_lisence);
             dialog.setTitle("オープンソースライセンス");
             dialog.setCancelable(true);
-            WebView webView = (WebView)dialog.findViewById(R.id.webview);
+            WebView webView = (WebView)dialog.findViewById(R.id.webView);
 
             webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
             webView.setWebViewClient(new WebViewClient() {
