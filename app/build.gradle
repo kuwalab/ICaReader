@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "net.kuwalab.android.icareader"
         minSdkVersion 10
-        targetSdkVersion 21
-        versionCode 123
-        versionName "1.2.3"
+        targetSdkVersion 22
+        versionCode 124
+        versionName "1.2.4"
 
         testApplicationId "net.kuwalab.android.icareader.test"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -33,7 +33,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-annotations:21.0.0'
-    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:support-annotations:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
 }

@@ -2,6 +2,7 @@
 <resources>
 
  <string name="app_name">ICa Reader</string>
+ <string name="action_lisence">ライセンス</string>
  <string name="kara">～</string>
  <string name="yen">￥</string>
  <string name="ica_first_step">ICaを端末にかざしてください</string>
