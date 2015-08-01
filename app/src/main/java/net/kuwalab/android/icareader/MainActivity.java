@@ -2,7 +2,6 @@ package net.kuwalab.android.icareader;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -12,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 /**
  * カードを読み取るメインクラス
@@ -21,6 +19,7 @@ import android.webkit.WebViewClient;
  */
 public class MainActivity extends ActionBarActivity {
     private HistoryFragment historyFragment;
+    private static final int LISENCE_DIALOG_ID = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         historyFragment = (HistoryFragment) manager
-                .findFragmentById(R.id.historyFragment);
+            .findFragmentById(R.id.historyFragment);
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -61,28 +60,39 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_lisence) {
-            final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.webview_lisence);
-            dialog.setTitle("オープンソースライセンス");
-            dialog.setCancelable(true);
-            WebView webView = (WebView)dialog.findViewById(R.id.webView);
-
-            webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-            webView.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                    super.onPageStarted(view, url, favicon);
-                }
-
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    dialog.show();
-                }
-            });
-            webView.loadUrl("file:///android_asset/lisence.html");
+            showDialog(LISENCE_DIALOG_ID);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    /**showDialogが呼ばれたら実行される*/
+    public Dialog onCreateDialog(int id) {
+        Dialog dialog = null;
+        switch (id) {
+            case LISENCE_DIALOG_ID:
+                dialog = new Dialog(this);
+                dialog.setContentView(R.layout.webview_lisence);
+                dialog.setTitle("オープンソースライセンス");
+                dialog.setCancelable(true);
+                WebView webView = (WebView) dialog.findViewById(R.id.webViewLisence);
+
+                webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+                webView.loadUrl("file:///android_asset/lisence.html");
+                break;
+        }
+
+        return dialog;
+    }
+
+    @Override
+    public void onPrepareDialog(int id, Dialog dialog) {
+        super.onPrepareDialog(id, dialog);
+
+        switch (id) {
+            case LISENCE_DIALOG_ID:
+                break;
+        }
     }
 }
