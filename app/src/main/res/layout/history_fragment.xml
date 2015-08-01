@@ -35,7 +35,7 @@
    style="@style/IcaRestStyle"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:gravity="right" />
+   android:gravity="end" />
  </LinearLayout>
 
  <LinearLayout
@@ -51,15 +51,17 @@
 
   <TextView
    style="@style/IcaHistoryStyle"
-   android:layout_width="wrap_content"
+   android:layout_width="0dp"
    android:layout_height="wrap_content"
+   android:layout_weight="1"
+   android:gravity="start"
    android:text="@string/ica_use_date"
    android:textAppearance="?android:attr/textAppearanceMedium" />
 
   <LinearLayout
-   android:layout_width="match_parent"
+   android:layout_width="wrap_content"
    android:layout_height="wrap_content"
-   android:gravity="right"
+   android:gravity="end"
    android:orientation="horizontal">
 
    <TextView
